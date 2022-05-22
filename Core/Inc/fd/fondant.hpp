@@ -1,7 +1,5 @@
-#include "gpio.hpp"
 
-#include <cstdint>
-#include <stm32f1xx.h>
+#include "stm32f1xx_hal.h"
 
 namespace fd {
 	/**
@@ -10,14 +8,28 @@ namespace fd {
 	 */
 	void sleep(long ms) {
 		HAL_Delay(ms);
-
 	}
 
-	void refresh_wwdg(WWDG_HandleTypeDef *watchdog) {
-		HAL_WWDG_Refresh(watchdog);
-	}
+    enum class status : uint32_t {
+        HAL_OK       = 0x00U,
+        HAL_ERROR    = 0x01U,
+        HAL_BUSY     = 0x02U,
+        HAL_TIMEOUT  = 0x03U
+    };
 
-	void refresh_iwdg() {
-	}
+#ifdef WWDG_PRESCALER_1
+    class window_watchdog {
+        WWDG_HandleTypeDef *watchdog;
+    public:
+        window_watchdog(WWDG_HandleTypeDef *watchdog): watchdog(watchdog) {
+
+        }
+
+        void refresh() {
+            HAL_WWDG_Refresh(watchdog);
+
+        }
+    };
+#endif
 
 }
