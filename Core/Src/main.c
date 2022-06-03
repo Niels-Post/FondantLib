@@ -55,7 +55,6 @@ static void MX_SPI1_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-int fd_main_();
 /* USER CODE END 0 */
 
 /**
@@ -88,7 +87,7 @@ int main(void)
   MX_GPIO_Init();
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
-	fd_main_();
+	fd_main_caller();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -203,6 +202,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : InputVoorbeeldPin_Pin */
+  GPIO_InitStruct.Pin = InputVoorbeeldPin_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(InputVoorbeeldPin_GPIO_Port, &GPIO_InitStruct);
 
 }
 

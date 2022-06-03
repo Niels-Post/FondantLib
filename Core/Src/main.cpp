@@ -1,19 +1,23 @@
 #include <fd/fondant.hpp>
-#include "fd/gpio.hpp"
-#include <fd/spi.hpp>
-int fd_main();
-extern "C" int fd_main_() {
-	return fd_main();
-}
+#include <fd/fondant_main.hpp>
+#include <fd/gpio.hpp>
+
+#include <examples.hpp>
 
 int fd_main() {
-//	fd::pin_out led_pin(GPIOC, GPIO_PIN_13);
-    fd::setup::pin_out(GPIOC, GPIO_PIN_13);
-	auto led_pin = fd::pin_out(GPIOC, GPIO_PIN_13);
-	while(true) {
-		led_pin.toggle();
-		fd::sleep(1000);
-	}
 
-	return 0;
+    // Voorbeeld 1: Hello World (blink)
+//    examples::helloworld::setup();
+//    examples::helloworld::run();
+
+    // Voorbeeld 2: Pin In Pin Out
+//    examples::pininpinout::setup();
+//    examples::pininpinout::run();
+
+    // Voorbeeld 3: Pins doorgeven
+    examples::pinsdoorgeven::setup();
+    examples::pinsdoorgeven::run();
+
+
+    return 0;
 }
