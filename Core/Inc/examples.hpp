@@ -11,6 +11,7 @@ namespace examples {
     examplenamespace(helloworld)
     examplenamespace(pininpinout)
     examplenamespace(pinsdoorgeven)
+    examplenamespace(spi)
 }
 
 

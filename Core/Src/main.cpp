@@ -15,9 +15,12 @@ int fd_main() {
 //    examples::pininpinout::run();
 
     // Voorbeeld 3: Pins doorgeven
-    examples::pinsdoorgeven::setup();
-    examples::pinsdoorgeven::run();
+//    examples::pinsdoorgeven::setup();
+//    examples::pinsdoorgeven::run();
 
+    // Voorbeeld 4: SPI
+    examples::spi::setup();
+    examples::spi::run();
 
     return 0;
 }

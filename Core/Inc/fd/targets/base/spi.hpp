@@ -14,7 +14,7 @@ namespace fd {
     };
 
 
-    class spi {
+    class spi_base {
     public:
         virtual fd::spi_status transmit(uint8_t *write_data, uint8_t size) {
             return fd::spi_status::ERROR;
