@@ -1,6 +1,6 @@
 #include <fd/fondant_targets.hpp>
 
-#if FONDANT_TARGET == stm32
+#if FONDANT_TARGET == FONDANT_TARGET_STM32_HAL
 
 #include <fd/targets/stm32_hal/gpio.hpp>
 

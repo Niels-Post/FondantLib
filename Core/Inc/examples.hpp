@@ -12,6 +12,7 @@ namespace examples {
     examplenamespace(pininpinout)
     examplenamespace(pinsdoorgeven)
     examplenamespace(spi)
+    examplenamespace(spi_dma)
 }
 
 

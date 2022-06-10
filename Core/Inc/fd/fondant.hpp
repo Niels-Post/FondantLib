@@ -15,3 +15,9 @@
 
 
 #endif
+
+
+// TODO
+// TODO MPU6050
+// TODO OLED
+// TODO HD44780

@@ -19,8 +19,12 @@ int fd_main() {
 //    examples::pinsdoorgeven::run();
 
     // Voorbeeld 4: SPI
-    examples::spi::setup();
-    examples::spi::run();
+//    examples::spi::setup();
+//    examples::spi::run();
+
+    // Voorbeeld 5: SPI_DMA
+    examples::spi_dma::setup();
+    examples::spi_dma::run();
 
     return 0;
 }

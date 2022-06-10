@@ -4,7 +4,7 @@
 #include <fd/spi.hpp>
 extern SPI_HandleTypeDef hspi1;
 
-namespace examples::spi {
+namespace examples::spi_dma {
 
     void setup() {
         fd::stm32_hal::pin_out::setup(GPIOA, GPIO_PIN_4);
@@ -17,15 +17,14 @@ namespace examples::spi {
 
 
         // Maak een pin_out aan voor PC13
-        auto bus = fd::stm32_hal::spi(&hspi1, false, 1000, cs_pin);
+        auto bus = fd::stm32_hal::spi(&hspi1, true, 1000, cs_pin);
 
-
+        uint8_t data[] = {0, 5, 0, 0};
 
         while (true) {
             // Lees de input pin en schrijf de waarde naar de interne LED
-            uint8_t data[] = {0, 5, 0, 10};
-            bus.transmit(data, 4);
-            bus.wait();
+            data[0] = static_cast<uint8_t>(bus.transmit(data, 4));
+            data[1] = static_cast<uint8_t>(bus.wait());
         }
     }
 

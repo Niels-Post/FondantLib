@@ -1,13 +1,16 @@
 #ifndef FONDANT_GPIO_HPP
 #define FONDANT_GPIO_HPP
 
+#include <fd/fondant_targets.hpp>
 
 
 
-#ifdef USE_HAL_DRIVER
 
+#if FONDANT_TARGET == FONDANT_TARGET_STM32_HAL
 #include "./targets/stm32_hal/gpio.hpp"
-
+#else
+#error "Geen GPIO implementatie gevonden voor target"
 #endif
+
 
 #endif //FONDANT_GPIO_HPP
