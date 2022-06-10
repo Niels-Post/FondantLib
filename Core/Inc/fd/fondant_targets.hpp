@@ -1,5 +1,5 @@
-#ifndef FONDANTLIB_FONDANT_TARGETS_HPP
-#define FONDANTLIB_FONDANT_TARGETS_HPP
+#ifndef FD_HDR_FONDANT_TARGETS
+#define FD_HDR_FONDANT_TARGETS
 
 #define FONDANT_TARGET_STM32_HAL 10
 
@@ -13,6 +13,10 @@
 #define FONDANT_HW_SPI
 #endif
 
+#ifdef HAL_I2C_MODULE_ENABLED
+#define FONDANT_HW_I2C
+#endif
+
 
 #endif
 
@@ -21,4 +25,4 @@
 #error "Kan target board niet vinden"
 #endif
 
-#endif //FONDANTLIB_FONDANT_TARGETS_HPP
+#endif //FD_HDR_FONDANT_TARGETS

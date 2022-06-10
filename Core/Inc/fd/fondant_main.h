@@ -1,7 +1,7 @@
-#ifndef FONDANT_MAIN_CALLER_H
-#define FONDANT_MAIN_CALLER_H
+#ifndef FD_HDR_FONDANT_MAIN_H
+#define FD_HDR_FONDANT_MAIN_H
 
 extern int fd_main_caller();
 
-#endif
+#endif //FD_HDR_FONDANT_MAIN_H
 

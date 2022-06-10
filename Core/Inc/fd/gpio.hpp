@@ -1,5 +1,5 @@
-#ifndef FONDANT_GPIO_HPP
-#define FONDANT_GPIO_HPP
+#ifndef FD_HDR_GPIO
+#define FD_HDR_GPIO
 
 #include <fd/fondant_targets.hpp>
 
@@ -13,4 +13,4 @@
 #endif
 
 
-#endif //FONDANT_GPIO_HPP
+#endif //FD_HDR_GPIO

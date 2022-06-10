@@ -1,5 +1,5 @@
-#ifndef FONDANT_STM32_HAL_FONDANT_HPP
-#define FONDANT_STM32_HAL_FONDANT_HPP
+#ifndef FD_HDR_STM32_HAL_CORE
+#define FD_HDR_STM32_HAL_CORE
 
 namespace fd::stm32_hal {
     enum class status : uint32_t {
@@ -11,4 +11,4 @@ namespace fd::stm32_hal {
 
 }
 
-#endif //FONDANT_STM32_HAL_FONDANT_HPP
+#endif //FD_HDR_STM32_HAL_CORE

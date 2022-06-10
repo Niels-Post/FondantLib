@@ -1,5 +1,5 @@
-#ifndef FD_SPI_HPP
-#define FD_SPI_HPP
+#ifndef FD_HDR_SPI
+#define FD_HDR_SPI
 
 #include <fd/fondant_targets.hpp>
 
@@ -17,4 +17,4 @@
 #endif
 
 
-#endif //FD_SPI_HPP
+#endif //FD_HDR_SPI

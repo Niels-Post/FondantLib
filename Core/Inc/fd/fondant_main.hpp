@@ -1,5 +1,5 @@
-#ifndef FONDANT_MAIN_CALLER_HPP
-#define FONDANT_MAIN_CALLER_HPP
+#ifndef FD_HDR_FONDANT_MAIN
+#define FD_HDR_FONDANT_MAIN
 
 extern int fd_main();
 
@@ -8,5 +8,5 @@ extern "C" int fd_main_caller() {
 }
 
 
-#endif
+#endif //FD_HDR_FONDANT_MAIN
 

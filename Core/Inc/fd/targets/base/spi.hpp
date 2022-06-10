@@ -1,5 +1,5 @@
-#ifndef FD_BASE_SPI_HPP
-#define FD_BASE_SPI_HPP
+#ifndef FD_HDR_BASE_SPI
+#define FD_HDR_BASE_SPI
 
 #include "fd/fondant.hpp"
 #include "stm32f1xx_hal_spi.h"
@@ -65,4 +65,4 @@ namespace fd {
     };
 }
 
-#endif
+#endif //FD_HDR_BASE_SPI

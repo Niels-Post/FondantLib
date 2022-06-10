@@ -1,0 +1,7 @@
+#ifndef FD_HDR_PERIPHERAL_MU6050
+#define FD_HDR_PERIPHERAL_MU6050
+
+class mpu6050 {
+
+};
+#endif //FD_HDR_PERIPHERAL_MU6050

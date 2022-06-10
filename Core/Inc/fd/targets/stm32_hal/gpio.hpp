@@ -1,5 +1,5 @@
-#ifndef FD_STM32_HAL_GPIO
-#define FD_STM32_HAL_GPIO
+#ifndef FD_HDR_STM32_HAL_GPIO
+#define FD_HDR_STM32_HAL_GPIO
 
 #include "fd/targets/base/gpio.hpp"
 #include "stm32f1xx_hal.h"
@@ -80,4 +80,4 @@ namespace fd::stm32_hal {
 }
 
 
-#endif
+#endif //FD_HDR_STM32_HAL_GPIO

@@ -1,5 +1,5 @@
-#ifndef FONDANT_HPP
-#define FONDANT_HPP
+#ifndef FD_HDR_FONDANT
+#define FD_HDR_FONDANT
 
 #include <fd/fondant_targets.hpp>
 
@@ -9,12 +9,12 @@
 
 
 
-#if FONDANT_TARGET==stm32
+#if FONDANT_TARGET==FONDANT_TARGET_STM32_HAL
 #include "./targets/stm32_hal/core.hpp"
 #endif
 
 
-#endif
+#endif //FD_HDR_FONDANT
 
 
 // TODO

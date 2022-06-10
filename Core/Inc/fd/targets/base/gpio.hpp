@@ -1,5 +1,5 @@
-#ifndef FD_GPIO
-#define FD_GPIO
+#ifndef FD_HDR_BASE_GPIO
+#define FD_HDR_BASE_GPIO
 
 namespace fd {
 
@@ -25,4 +25,4 @@ namespace fd {
 };
 
 
-#endif
+#endif //FD_HDR_BASE_GPIO

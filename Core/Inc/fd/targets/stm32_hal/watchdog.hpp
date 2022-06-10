@@ -1,5 +1,5 @@
-#ifndef FONDANT_STM32_HAL_WATCHDOG_HPP
-#define FONDANT_STM32_HAL_WATCHDOG_HPP
+#ifndef FD_HDR_STM32_HAL_WATCHDOG
+#define FD_HDR_STM32_HAL_WATCHDOG
 #include <stm32f1xx_hal_conf.h>
 
 #ifdef HAL_WWDG_MODULE_ENABLED
@@ -17,4 +17,4 @@ class window_watchdog {
 #endif
 
 
-#endif //FONDANT_STM32_HAL_WATCHDOG_HPP
+#endif //FD_HDR_STM32_HAL_WATCHDOG

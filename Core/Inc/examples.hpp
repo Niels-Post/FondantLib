@@ -1,5 +1,5 @@
-#ifndef FONDANTLIB_EXAMPLES_HPP
-#define FONDANTLIB_EXAMPLES_HPP
+#ifndef FD_HDR_EXAMPLES
+#define FD_HDR_EXAMPLES
 
 #define examplenamespace(name) namespace name { \
     void setup();                               \
@@ -16,4 +16,4 @@ namespace examples {
 }
 
 
-#endif //FONDANTLIB_EXAMPLES_HPP
+#endif //FD_HDR_EXAMPLES

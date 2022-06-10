@@ -1,9 +1,5 @@
-//
-// Created by Niels Post on 03/06/2022.
-//
-
-#ifndef FONDANTLIB_SPI_HPP
-#define FONDANTLIB_SPI_HPP
+#ifndef FD_HDR_STM32_HAL_SPI
+#define FD_HDR_STM32_HAL_SPI
 
 #include <fd/targets/base/spi.hpp>
 #include <fd/targets/base/gpio.hpp>
@@ -11,12 +7,11 @@
 
 #include <fd/fondant_targets.hpp>
 
-#ifdef FONDANT_HW_SPI
 namespace fd::stm32_hal {
 
     fd::spi_status get_spi_status(int status);
     enum class spi_error_status: uint32_t {
-        NONE = HAL_SPI_ERROR_NONE,
+        NONE = HAL_I2C_ERROR_NONE,
         ERROR_MODF = HAL_SPI_ERROR_MODF,
         ERROR_CRC = HAL_SPI_ERROR_CRC,
         ERROR_OVR = HAL_SPI_ERROR_OVR,
@@ -42,5 +37,4 @@ namespace fd::stm32_hal {
     };
 
 }
-#endif
-#endif //FONDANTLIB_SPI_HPP
+#endif //FD_HDR_STM32_HAL_SPI
