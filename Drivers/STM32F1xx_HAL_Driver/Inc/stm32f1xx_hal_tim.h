@@ -442,7 +442,7 @@ typedef  void (*pTIM_CallbackTypeDef)(TIM_HandleTypeDef *htim);  /*!< pointer to
   * @}
   */
 
-/** @defgroup TIM_DMA_Base_address TIM DMA Base Address
+/** @defgroup TIM_DMA_Base_address TIM DMA Base Register
   * @{
   */
 #define TIM_DMABASE_CR1                    0x00000000U

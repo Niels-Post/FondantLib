@@ -1,7 +1,13 @@
 #include <examples.hpp>
 
 #include <fd/gpio.hpp>
+
+#include <fd/fondant_targets.hpp>
+
+#ifdef FONDANT_HW_SPI
+
 #include <fd/spi.hpp>
+
 extern SPI_HandleTypeDef hspi1;
 
 namespace examples::spi_dma {
@@ -29,3 +35,5 @@ namespace examples::spi_dma {
     }
 
 }
+
+#endif

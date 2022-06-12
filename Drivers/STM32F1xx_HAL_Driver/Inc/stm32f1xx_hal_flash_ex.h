@@ -216,7 +216,7 @@ typedef struct
                              @ref FLASHEx_OB_nRST_STDBY */
 #endif /* FLASH_BANK2_END */
 
-  uint32_t DATAAddress; /*!< DATAAddress: Address of the option byte DATA to be programmed
+  uint32_t DATAAddress; /*!< DATAAddress: Register of the option byte DATA to be programmed
                              This parameter can be a value of @ref FLASHEx_OB_Data_Address */
   
   uint8_t DATAData;     /*!< DATAData: Data to be stored in the option byte DATA
@@ -488,7 +488,7 @@ typedef struct
   */
 #endif /* FLASH_BANK2_END */
 
-/** @defgroup FLASHEx_OB_Data_Address  Option Byte Data Address
+/** @defgroup FLASHEx_OB_Data_Address  Option Byte Data Register
   * @{
   */
 #define OB_DATA_ADDRESS_DATA0     0x1FFFF804U

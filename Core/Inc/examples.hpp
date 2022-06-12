@@ -13,6 +13,9 @@ namespace examples {
     examplenamespace(pinsdoorgeven)
     examplenamespace(spi)
     examplenamespace(spi_dma)
+    examplenamespace(i2c)
+    examplenamespace(i2c_hd44780)
+    examplenamespace(i2c_bme280_hd44780)
 }
 
 

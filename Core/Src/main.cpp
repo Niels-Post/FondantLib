@@ -23,8 +23,21 @@ int fd_main() {
 //    examples::spi::run();
 
     // Voorbeeld 5: SPI_DMA
-    examples::spi_dma::setup();
-    examples::spi_dma::run();
+//    examples::spi_dma::setup();
+//    examples::spi_dma::run();
+
+    // Voorbeeld 6: I2C
+//    examples::i2c::setup();
+//    examples::i2c::run();
+
+
+    // Voorbeeld 7: I2C_HHD44780
+//    examples::i2c_hd44780::setup();
+//    examples::i2c_hd44780::run();
+
+    // Voorbeeld 8: I2C_HHD44780_BMP280
+    examples::i2c_bme280_hd44780::setup();
+    examples::i2c_bme280_hd44780::run();
 
     return 0;
 }

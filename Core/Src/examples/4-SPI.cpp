@@ -1,7 +1,11 @@
 #include <examples.hpp>
 
 #include <fd/gpio.hpp>
+
+#ifdef FONDANT_HW_SPI
 #include <fd/spi.hpp>
+
+
 extern SPI_HandleTypeDef hspi1;
 
 namespace examples::spi {
@@ -30,3 +34,5 @@ namespace examples::spi {
     }
 
 }
+
+#endif

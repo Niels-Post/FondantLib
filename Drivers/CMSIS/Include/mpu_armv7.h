@@ -67,7 +67,7 @@
 #define ARM_MPU_AP_PRO  5U ///!< MPU Access Permission privileged access read-only
 #define ARM_MPU_AP_RO   6U ///!< MPU Access Permission read-only access
 
-/** MPU Region Base Address Register Value
+/** MPU Region Base Register Register Value
 *
 * \param Region The region to be configured, number 0 to 15.
 * \param BaseAddress The base address for the region.

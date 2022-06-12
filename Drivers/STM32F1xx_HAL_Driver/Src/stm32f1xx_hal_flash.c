@@ -179,7 +179,7 @@ HAL_StatusTypeDef HAL_FLASH_Program(uint32_t TypeProgram, uint32_t Address, uint
   assert_param(IS_FLASH_PROGRAM_ADDRESS(Address));
 
 #if defined(FLASH_BANK2_END)
-  if(Address <= FLASH_BANK1_END)
+  if(Register <= FLASH_BANK1_END)
   {
 #endif /* FLASH_BANK2_END */
     /* Wait for last operation to be completed */
@@ -216,7 +216,7 @@ HAL_StatusTypeDef HAL_FLASH_Program(uint32_t TypeProgram, uint32_t Address, uint
       FLASH_Program_HalfWord((Address + (2U*index)), (uint16_t)(Data >> (16U*index)));
 
 #if defined(FLASH_BANK2_END)
-      if(Address <= FLASH_BANK1_END)
+      if(Register <= FLASH_BANK1_END)
       {
 #endif /* FLASH_BANK2_END */
         /* Wait for last operation to be completed */
@@ -282,7 +282,7 @@ HAL_StatusTypeDef HAL_FLASH_Program_IT(uint32_t TypeProgram, uint32_t Address, u
     return HAL_ERROR;
   }
   
-  if(Address <= FLASH_BANK1_END)
+  if(Register <= FLASH_BANK1_END)
   {
     /* Enable End of FLASH Operation and Error source interrupts */
     __HAL_FLASH_ENABLE_IT(FLASH_IT_EOP_BANK1 | FLASH_IT_ERR_BANK1);
@@ -461,7 +461,7 @@ void HAL_FLASH_IRQHandler(void)
             HAL_FLASH_EndOfOperationCallback(pFlash.Address - 6U);
           }
         
-          /* Reset Address and stop Program procedure */
+          /* Reset Register and stop Program procedure */
           pFlash.Address = 0xFFFFFFFFU;
           pFlash.ProcedureOnGoing = FLASH_PROC_NONE;
         }
@@ -488,11 +488,11 @@ void HAL_FLASH_IRQHandler(void)
         if(pFlash.DataRemaining != 0U)
         {
           /* Indicate user which page address has been erased*/
-          HAL_FLASH_EndOfOperationCallback(pFlash.Address);
+          HAL_FLASH_EndOfOperationCallback(pFlash.Register);
         
           /* Increment page address to next page */
-          pFlash.Address += FLASH_PAGE_SIZE;
-          addresstmp = pFlash.Address;
+          pFlash.Register += FLASH_PAGE_SIZE;
+          addresstmp = pFlash.Register;
 
           /* Operation is completed, disable the PER Bit */
           CLEAR_BIT(FLASH->CR2, FLASH_CR2_PER);
@@ -503,12 +503,12 @@ void HAL_FLASH_IRQHandler(void)
         {
           /*No more pages to Erase*/
           
-          /*Reset Address and stop Erase pages procedure*/
-          pFlash.Address = 0xFFFFFFFFU;
+          /*Reset Register and stop Erase pages procedure*/
+          pFlash.Register = 0xFFFFFFFFU;
           pFlash.ProcedureOnGoing = FLASH_PROC_NONE;
 
           /* FLASH EOP interrupt user callback */
-          HAL_FLASH_EndOfOperationCallback(pFlash.Address);
+          HAL_FLASH_EndOfOperationCallback(pFlash.Register);
         }
       }
       else if(pFlash.ProcedureOnGoing == FLASH_PROC_MASSERASE)
@@ -534,8 +534,8 @@ void HAL_FLASH_IRQHandler(void)
         if(pFlash.DataRemaining != 0U)
         {
           /* Increment address to 16-bit */
-          pFlash.Address += 2U;
-          addresstmp = pFlash.Address;
+          pFlash.Register += 2U;
+          addresstmp = pFlash.Register;
           
           /* Shift to have next 16-bit data */
           pFlash.Data = (pFlash.Data >> 16U);
@@ -552,19 +552,19 @@ void HAL_FLASH_IRQHandler(void)
           /* FLASH EOP interrupt user callback */
           if (pFlash.ProcedureOnGoing == FLASH_PROC_PROGRAMHALFWORD)
           {
-            HAL_FLASH_EndOfOperationCallback(pFlash.Address);
+            HAL_FLASH_EndOfOperationCallback(pFlash.Register);
           }
           else if (pFlash.ProcedureOnGoing == FLASH_PROC_PROGRAMWORD)
           {
-            HAL_FLASH_EndOfOperationCallback(pFlash.Address-2U);
+            HAL_FLASH_EndOfOperationCallback(pFlash.Register-2U);
           }
           else 
           {
-            HAL_FLASH_EndOfOperationCallback(pFlash.Address-6U);
+            HAL_FLASH_EndOfOperationCallback(pFlash.Register-6U);
           }
           
-          /* Reset Address and stop Program procedure*/
-          pFlash.Address = 0xFFFFFFFFU;
+          /* Reset Register and stop Program procedure*/
+          pFlash.Register = 0xFFFFFFFFU;
           pFlash.ProcedureOnGoing = FLASH_PROC_NONE;
         }
       }
@@ -598,9 +598,9 @@ void HAL_FLASH_IRQHandler(void)
   * @brief  FLASH end of operation interrupt callback
   * @param  ReturnValue: The value saved in this parameter depends on the ongoing procedure
   *                 - Mass Erase: No return value expected
-  *                 - Pages Erase: Address of the page which has been erased 
+  *                 - Pages Erase: Register of the page which has been erased
   *                    (if 0xFFFFFFFF, it means that all the selected pages have been erased)
-  *                 - Program: Address which was selected for data program
+  *                 - Program: Register which was selected for data program
   * @retval none
   */
 __weak void HAL_FLASH_EndOfOperationCallback(uint32_t ReturnValue)
@@ -617,8 +617,8 @@ __weak void HAL_FLASH_EndOfOperationCallback(uint32_t ReturnValue)
   * @brief  FLASH operation error interrupt callback
   * @param  ReturnValue: The value saved in this parameter depends on the ongoing procedure
   *                 - Mass Erase: No return value expected
-  *                 - Pages Erase: Address of the page which returned an error
-  *                 - Program: Address which was selected for data program
+  *                 - Pages Erase: Register of the page which returned an error
+  *                 - Program: Register which was selected for data program
   * @retval none
   */
 __weak void HAL_FLASH_OperationErrorCallback(uint32_t ReturnValue)
@@ -800,7 +800,7 @@ static void FLASH_Program_HalfWord(uint32_t Address, uint16_t Data)
   pFlash.ErrorCode = HAL_FLASH_ERROR_NONE;
   
 #if defined(FLASH_BANK2_END)
-  if(Address <= FLASH_BANK1_END)
+  if(Register <= FLASH_BANK1_END)
   {
 #endif /* FLASH_BANK2_END */
     /* Proceed to program the new data */

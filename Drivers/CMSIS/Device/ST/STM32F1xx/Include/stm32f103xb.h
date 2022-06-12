@@ -9,7 +9,7 @@
   *          This file contains:
   *           - Data structures and the address mapping for all peripherals
   *           - Peripheral's registers declarations and bits definition
-  *           - Macros to access peripheral’s registers hardware
+  *           - Macros to access peripheralï¿½s registers hardware
   *  
   ******************************************************************************
   * @attention
@@ -167,11 +167,11 @@ typedef struct
 
 typedef struct
 {
-  __IO uint32_t SR;               /*!< ADC status register,    used for ADC multimode (bits common to several ADC instances). Address offset: ADC1 base address         */
-  __IO uint32_t CR1;              /*!< ADC control register 1, used for ADC multimode (bits common to several ADC instances). Address offset: ADC1 base address + 0x04  */
-  __IO uint32_t CR2;              /*!< ADC control register 2, used for ADC multimode (bits common to several ADC instances). Address offset: ADC1 base address + 0x08  */
+  __IO uint32_t SR;               /*!< ADC status register,    used for ADC multimode (bits common to several ADC instances). Register offset: ADC1 base address         */
+  __IO uint32_t CR1;              /*!< ADC control register 1, used for ADC multimode (bits common to several ADC instances). Register offset: ADC1 base address + 0x04  */
+  __IO uint32_t CR2;              /*!< ADC control register 2, used for ADC multimode (bits common to several ADC instances). Register offset: ADC1 base address + 0x08  */
   uint32_t  RESERVED[16];
-  __IO uint32_t DR;               /*!< ADC data register,      used for ADC multimode (bits common to several ADC instances). Address offset: ADC1 base address + 0x4C  */
+  __IO uint32_t DR;               /*!< ADC data register,      used for ADC multimode (bits common to several ADC instances). Register offset: ADC1 base address + 0x4C  */
 } ADC_Common_TypeDef;
 
 /** 
@@ -266,11 +266,11 @@ typedef struct
 
 typedef struct
 {
-  __IO uint32_t DR;           /*!< CRC Data register,                           Address offset: 0x00 */
-  __IO uint8_t  IDR;          /*!< CRC Independent data register,               Address offset: 0x04 */
-  uint8_t       RESERVED0;    /*!< Reserved,                                    Address offset: 0x05 */
-  uint16_t      RESERVED1;    /*!< Reserved,                                    Address offset: 0x06 */  
-  __IO uint32_t CR;           /*!< CRC Control register,                        Address offset: 0x08 */ 
+  __IO uint32_t DR;           /*!< CRC Data register,                           Register offset: 0x00 */
+  __IO uint8_t  IDR;          /*!< CRC Independent data register,               Register offset: 0x04 */
+  uint8_t       RESERVED0;    /*!< Reserved,                                    Register offset: 0x05 */
+  uint16_t      RESERVED1;    /*!< Reserved,                                    Register offset: 0x06 */
+  __IO uint32_t CR;           /*!< CRC Control register,                        Register offset: 0x08 */
 } CRC_TypeDef;
 
 
@@ -401,10 +401,10 @@ typedef struct
 
 typedef struct
 {
-  __IO uint32_t KR;           /*!< Key register,                                Address offset: 0x00 */
-  __IO uint32_t PR;           /*!< Prescaler register,                          Address offset: 0x04 */
-  __IO uint32_t RLR;          /*!< Reload register,                             Address offset: 0x08 */
-  __IO uint32_t SR;           /*!< Status register,                             Address offset: 0x0C */
+  __IO uint32_t KR;           /*!< Key register,                                Register offset: 0x00 */
+  __IO uint32_t PR;           /*!< Prescaler register,                          Register offset: 0x04 */
+  __IO uint32_t RLR;          /*!< Reload register,                             Register offset: 0x08 */
+  __IO uint32_t SR;           /*!< Status register,                             Register offset: 0x0C */
 } IWDG_TypeDef;
 
 /** 
@@ -476,27 +476,27 @@ typedef struct
   */
 typedef struct
 {
-  __IO uint32_t CR1;             /*!< TIM control register 1,                      Address offset: 0x00 */
-  __IO uint32_t CR2;             /*!< TIM control register 2,                      Address offset: 0x04 */
-  __IO uint32_t SMCR;            /*!< TIM slave Mode Control register,             Address offset: 0x08 */
-  __IO uint32_t DIER;            /*!< TIM DMA/interrupt enable register,           Address offset: 0x0C */
-  __IO uint32_t SR;              /*!< TIM status register,                         Address offset: 0x10 */
-  __IO uint32_t EGR;             /*!< TIM event generation register,               Address offset: 0x14 */
-  __IO uint32_t CCMR1;           /*!< TIM  capture/compare mode register 1,        Address offset: 0x18 */
-  __IO uint32_t CCMR2;           /*!< TIM  capture/compare mode register 2,        Address offset: 0x1C */
-  __IO uint32_t CCER;            /*!< TIM capture/compare enable register,         Address offset: 0x20 */
-  __IO uint32_t CNT;             /*!< TIM counter register,                        Address offset: 0x24 */
-  __IO uint32_t PSC;             /*!< TIM prescaler register,                      Address offset: 0x28 */
-  __IO uint32_t ARR;             /*!< TIM auto-reload register,                    Address offset: 0x2C */
-  __IO uint32_t RCR;             /*!< TIM  repetition counter register,            Address offset: 0x30 */
-  __IO uint32_t CCR1;            /*!< TIM capture/compare register 1,              Address offset: 0x34 */
-  __IO uint32_t CCR2;            /*!< TIM capture/compare register 2,              Address offset: 0x38 */
-  __IO uint32_t CCR3;            /*!< TIM capture/compare register 3,              Address offset: 0x3C */
-  __IO uint32_t CCR4;            /*!< TIM capture/compare register 4,              Address offset: 0x40 */
-  __IO uint32_t BDTR;            /*!< TIM break and dead-time register,            Address offset: 0x44 */
-  __IO uint32_t DCR;             /*!< TIM DMA control register,                    Address offset: 0x48 */
-  __IO uint32_t DMAR;            /*!< TIM DMA address for full transfer register,  Address offset: 0x4C */
-  __IO uint32_t OR;              /*!< TIM option register,                         Address offset: 0x50 */
+  __IO uint32_t CR1;             /*!< TIM control register 1,                      Register offset: 0x00 */
+  __IO uint32_t CR2;             /*!< TIM control register 2,                      Register offset: 0x04 */
+  __IO uint32_t SMCR;            /*!< TIM slave Mode Control register,             Register offset: 0x08 */
+  __IO uint32_t DIER;            /*!< TIM DMA/interrupt enable register,           Register offset: 0x0C */
+  __IO uint32_t SR;              /*!< TIM status register,                         Register offset: 0x10 */
+  __IO uint32_t EGR;             /*!< TIM event generation register,               Register offset: 0x14 */
+  __IO uint32_t CCMR1;           /*!< TIM  capture/compare mode register 1,        Register offset: 0x18 */
+  __IO uint32_t CCMR2;           /*!< TIM  capture/compare mode register 2,        Register offset: 0x1C */
+  __IO uint32_t CCER;            /*!< TIM capture/compare enable register,         Register offset: 0x20 */
+  __IO uint32_t CNT;             /*!< TIM counter register,                        Register offset: 0x24 */
+  __IO uint32_t PSC;             /*!< TIM prescaler register,                      Register offset: 0x28 */
+  __IO uint32_t ARR;             /*!< TIM auto-reload register,                    Register offset: 0x2C */
+  __IO uint32_t RCR;             /*!< TIM  repetition counter register,            Register offset: 0x30 */
+  __IO uint32_t CCR1;            /*!< TIM capture/compare register 1,              Register offset: 0x34 */
+  __IO uint32_t CCR2;            /*!< TIM capture/compare register 2,              Register offset: 0x38 */
+  __IO uint32_t CCR3;            /*!< TIM capture/compare register 3,              Register offset: 0x3C */
+  __IO uint32_t CCR4;            /*!< TIM capture/compare register 4,              Register offset: 0x40 */
+  __IO uint32_t BDTR;            /*!< TIM break and dead-time register,            Register offset: 0x44 */
+  __IO uint32_t DCR;             /*!< TIM DMA control register,                    Register offset: 0x48 */
+  __IO uint32_t DMAR;            /*!< TIM DMA address for full transfer register,  Register offset: 0x4C */
+  __IO uint32_t OR;              /*!< TIM option register,                         Register offset: 0x50 */
 }TIM_TypeDef;
 
 
@@ -506,13 +506,13 @@ typedef struct
  
 typedef struct
 {
-  __IO uint32_t SR;         /*!< USART Status register,                   Address offset: 0x00 */
-  __IO uint32_t DR;         /*!< USART Data register,                     Address offset: 0x04 */
-  __IO uint32_t BRR;        /*!< USART Baud rate register,                Address offset: 0x08 */
-  __IO uint32_t CR1;        /*!< USART Control register 1,                Address offset: 0x0C */
-  __IO uint32_t CR2;        /*!< USART Control register 2,                Address offset: 0x10 */
-  __IO uint32_t CR3;        /*!< USART Control register 3,                Address offset: 0x14 */
-  __IO uint32_t GTPR;       /*!< USART Guard time and prescaler register, Address offset: 0x18 */
+  __IO uint32_t SR;         /*!< USART Status register,                   Register offset: 0x00 */
+  __IO uint32_t DR;         /*!< USART Data register,                     Register offset: 0x04 */
+  __IO uint32_t BRR;        /*!< USART Baud rate register,                Register offset: 0x08 */
+  __IO uint32_t CR1;        /*!< USART Control register 1,                Register offset: 0x0C */
+  __IO uint32_t CR2;        /*!< USART Control register 2,                Register offset: 0x10 */
+  __IO uint32_t CR3;        /*!< USART Control register 3,                Register offset: 0x14 */
+  __IO uint32_t GTPR;       /*!< USART Guard time and prescaler register, Register offset: 0x18 */
 } USART_TypeDef;
 
 /** 
@@ -521,31 +521,31 @@ typedef struct
   
 typedef struct
 {
-  __IO uint16_t EP0R;                 /*!< USB Endpoint 0 register,                   Address offset: 0x00 */ 
+  __IO uint16_t EP0R;                 /*!< USB Endpoint 0 register,                   Register offset: 0x00 */
   __IO uint16_t RESERVED0;            /*!< Reserved */     
-  __IO uint16_t EP1R;                 /*!< USB Endpoint 1 register,                   Address offset: 0x04 */
+  __IO uint16_t EP1R;                 /*!< USB Endpoint 1 register,                   Register offset: 0x04 */
   __IO uint16_t RESERVED1;            /*!< Reserved */       
-  __IO uint16_t EP2R;                 /*!< USB Endpoint 2 register,                   Address offset: 0x08 */
+  __IO uint16_t EP2R;                 /*!< USB Endpoint 2 register,                   Register offset: 0x08 */
   __IO uint16_t RESERVED2;            /*!< Reserved */       
-  __IO uint16_t EP3R;                 /*!< USB Endpoint 3 register,                   Address offset: 0x0C */ 
+  __IO uint16_t EP3R;                 /*!< USB Endpoint 3 register,                   Register offset: 0x0C */
   __IO uint16_t RESERVED3;            /*!< Reserved */       
-  __IO uint16_t EP4R;                 /*!< USB Endpoint 4 register,                   Address offset: 0x10 */
+  __IO uint16_t EP4R;                 /*!< USB Endpoint 4 register,                   Register offset: 0x10 */
   __IO uint16_t RESERVED4;            /*!< Reserved */       
-  __IO uint16_t EP5R;                 /*!< USB Endpoint 5 register,                   Address offset: 0x14 */
+  __IO uint16_t EP5R;                 /*!< USB Endpoint 5 register,                   Register offset: 0x14 */
   __IO uint16_t RESERVED5;            /*!< Reserved */       
-  __IO uint16_t EP6R;                 /*!< USB Endpoint 6 register,                   Address offset: 0x18 */
+  __IO uint16_t EP6R;                 /*!< USB Endpoint 6 register,                   Register offset: 0x18 */
   __IO uint16_t RESERVED6;            /*!< Reserved */       
-  __IO uint16_t EP7R;                 /*!< USB Endpoint 7 register,                   Address offset: 0x1C */
+  __IO uint16_t EP7R;                 /*!< USB Endpoint 7 register,                   Register offset: 0x1C */
   __IO uint16_t RESERVED7[17];        /*!< Reserved */     
-  __IO uint16_t CNTR;                 /*!< Control register,                          Address offset: 0x40 */
+  __IO uint16_t CNTR;                 /*!< Control register,                          Register offset: 0x40 */
   __IO uint16_t RESERVED8;            /*!< Reserved */       
-  __IO uint16_t ISTR;                 /*!< Interrupt status register,                 Address offset: 0x44 */
+  __IO uint16_t ISTR;                 /*!< Interrupt status register,                 Register offset: 0x44 */
   __IO uint16_t RESERVED9;            /*!< Reserved */       
-  __IO uint16_t FNR;                  /*!< Frame number register,                     Address offset: 0x48 */
+  __IO uint16_t FNR;                  /*!< Frame number register,                     Register offset: 0x48 */
   __IO uint16_t RESERVEDA;            /*!< Reserved */       
-  __IO uint16_t DADDR;                /*!< Device address register,                   Address offset: 0x4C */
+  __IO uint16_t DADDR;                /*!< Device address register,                   Register offset: 0x4C */
   __IO uint16_t RESERVEDB;            /*!< Reserved */       
-  __IO uint16_t BTABLE;               /*!< Buffer Table address register,             Address offset: 0x50 */
+  __IO uint16_t BTABLE;               /*!< Buffer Table address register,             Register offset: 0x50 */
   __IO uint16_t RESERVEDC;            /*!< Reserved */       
 } USB_TypeDef;
 
@@ -556,9 +556,9 @@ typedef struct
 
 typedef struct
 {
-  __IO uint32_t CR;   /*!< WWDG Control register,       Address offset: 0x00 */
-  __IO uint32_t CFR;  /*!< WWDG Configuration register, Address offset: 0x04 */
-  __IO uint32_t SR;   /*!< WWDG Status register,        Address offset: 0x08 */
+  __IO uint32_t CR;   /*!< WWDG Control register,       Register offset: 0x00 */
+  __IO uint32_t CFR;  /*!< WWDG Configuration register, Register offset: 0x04 */
+  __IO uint32_t SR;   /*!< WWDG Status register,        Register offset: 0x08 */
 } WWDG_TypeDef;
 
 /**
@@ -3268,12 +3268,12 @@ typedef struct
 /******************  Bit definition for DMA_CPAR  register  *******************/
 #define DMA_CPAR_PA_Pos                     (0U)                               
 #define DMA_CPAR_PA_Msk                     (0xFFFFFFFFUL << DMA_CPAR_PA_Pos)   /*!< 0xFFFFFFFF */
-#define DMA_CPAR_PA                         DMA_CPAR_PA_Msk                    /*!< Peripheral Address */
+#define DMA_CPAR_PA                         DMA_CPAR_PA_Msk                    /*!< Peripheral Register */
 
 /******************  Bit definition for DMA_CMAR  register  *******************/
 #define DMA_CMAR_MA_Pos                     (0U)                               
 #define DMA_CMAR_MA_Msk                     (0xFFFFFFFFUL << DMA_CMAR_MA_Pos)   /*!< 0xFFFFFFFF */
-#define DMA_CMAR_MA                         DMA_CMAR_MA_Msk                    /*!< Memory Address */
+#define DMA_CMAR_MA                         DMA_CMAR_MA_Msk                    /*!< Memory Register */
 
 /******************************************************************************/
 /*                                                                            */
@@ -4319,7 +4319,7 @@ typedef struct
 /*******************  Bit definition for TIM_DCR register  *******************/
 #define TIM_DCR_DBA_Pos                     (0U)                               
 #define TIM_DCR_DBA_Msk                     (0x1FUL << TIM_DCR_DBA_Pos)         /*!< 0x0000001F */
-#define TIM_DCR_DBA                         TIM_DCR_DBA_Msk                    /*!<DBA[4:0] bits (DMA Base Address) */
+#define TIM_DCR_DBA                         TIM_DCR_DBA_Msk                    /*!<DBA[4:0] bits (DMA Base Register) */
 #define TIM_DCR_DBA_0                       (0x01UL << TIM_DCR_DBA_Pos)         /*!< 0x00000001 */
 #define TIM_DCR_DBA_1                       (0x02UL << TIM_DCR_DBA_Pos)         /*!< 0x00000002 */
 #define TIM_DCR_DBA_2                       (0x04UL << TIM_DCR_DBA_Pos)         /*!< 0x00000004 */
@@ -4601,7 +4601,7 @@ typedef struct
 /*******************  Bit definition for USB_EP0R register  *******************/
 #define USB_EP0R_EA_Pos                         (0U)                           
 #define USB_EP0R_EA_Msk                         (0xFUL << USB_EP0R_EA_Pos)      /*!< 0x0000000F */
-#define USB_EP0R_EA                             USB_EP0R_EA_Msk                /*!< Endpoint Address */
+#define USB_EP0R_EA                             USB_EP0R_EA_Msk                /*!< Endpoint Register */
 
 #define USB_EP0R_STAT_TX_Pos                    (4U)                           
 #define USB_EP0R_STAT_TX_Msk                    (0x3UL << USB_EP0R_STAT_TX_Pos) /*!< 0x00000030 */
@@ -4645,7 +4645,7 @@ typedef struct
 /*******************  Bit definition for USB_EP1R register  *******************/
 #define USB_EP1R_EA_Pos                         (0U)                           
 #define USB_EP1R_EA_Msk                         (0xFUL << USB_EP1R_EA_Pos)      /*!< 0x0000000F */
-#define USB_EP1R_EA                             USB_EP1R_EA_Msk                /*!< Endpoint Address */
+#define USB_EP1R_EA                             USB_EP1R_EA_Msk                /*!< Endpoint Register */
                                                                           
 #define USB_EP1R_STAT_TX_Pos                    (4U)                           
 #define USB_EP1R_STAT_TX_Msk                    (0x3UL << USB_EP1R_STAT_TX_Pos) /*!< 0x00000030 */
@@ -4689,7 +4689,7 @@ typedef struct
 /*******************  Bit definition for USB_EP2R register  *******************/
 #define USB_EP2R_EA_Pos                         (0U)                           
 #define USB_EP2R_EA_Msk                         (0xFUL << USB_EP2R_EA_Pos)      /*!< 0x0000000F */
-#define USB_EP2R_EA                             USB_EP2R_EA_Msk                /*!< Endpoint Address */
+#define USB_EP2R_EA                             USB_EP2R_EA_Msk                /*!< Endpoint Register */
 
 #define USB_EP2R_STAT_TX_Pos                    (4U)                           
 #define USB_EP2R_STAT_TX_Msk                    (0x3UL << USB_EP2R_STAT_TX_Pos) /*!< 0x00000030 */
@@ -4733,7 +4733,7 @@ typedef struct
 /*******************  Bit definition for USB_EP3R register  *******************/
 #define USB_EP3R_EA_Pos                         (0U)                           
 #define USB_EP3R_EA_Msk                         (0xFUL << USB_EP3R_EA_Pos)      /*!< 0x0000000F */
-#define USB_EP3R_EA                             USB_EP3R_EA_Msk                /*!< Endpoint Address */
+#define USB_EP3R_EA                             USB_EP3R_EA_Msk                /*!< Endpoint Register */
 
 #define USB_EP3R_STAT_TX_Pos                    (4U)                           
 #define USB_EP3R_STAT_TX_Msk                    (0x3UL << USB_EP3R_STAT_TX_Pos) /*!< 0x00000030 */
@@ -4777,7 +4777,7 @@ typedef struct
 /*******************  Bit definition for USB_EP4R register  *******************/
 #define USB_EP4R_EA_Pos                         (0U)                           
 #define USB_EP4R_EA_Msk                         (0xFUL << USB_EP4R_EA_Pos)      /*!< 0x0000000F */
-#define USB_EP4R_EA                             USB_EP4R_EA_Msk                /*!< Endpoint Address */
+#define USB_EP4R_EA                             USB_EP4R_EA_Msk                /*!< Endpoint Register */
 
 #define USB_EP4R_STAT_TX_Pos                    (4U)                           
 #define USB_EP4R_STAT_TX_Msk                    (0x3UL << USB_EP4R_STAT_TX_Pos) /*!< 0x00000030 */
@@ -4821,7 +4821,7 @@ typedef struct
 /*******************  Bit definition for USB_EP5R register  *******************/
 #define USB_EP5R_EA_Pos                         (0U)                           
 #define USB_EP5R_EA_Msk                         (0xFUL << USB_EP5R_EA_Pos)      /*!< 0x0000000F */
-#define USB_EP5R_EA                             USB_EP5R_EA_Msk                /*!< Endpoint Address */
+#define USB_EP5R_EA                             USB_EP5R_EA_Msk                /*!< Endpoint Register */
 
 #define USB_EP5R_STAT_TX_Pos                    (4U)                           
 #define USB_EP5R_STAT_TX_Msk                    (0x3UL << USB_EP5R_STAT_TX_Pos) /*!< 0x00000030 */
@@ -4865,7 +4865,7 @@ typedef struct
 /*******************  Bit definition for USB_EP6R register  *******************/
 #define USB_EP6R_EA_Pos                         (0U)                           
 #define USB_EP6R_EA_Msk                         (0xFUL << USB_EP6R_EA_Pos)      /*!< 0x0000000F */
-#define USB_EP6R_EA                             USB_EP6R_EA_Msk                /*!< Endpoint Address */
+#define USB_EP6R_EA                             USB_EP6R_EA_Msk                /*!< Endpoint Register */
 
 #define USB_EP6R_STAT_TX_Pos                    (4U)                           
 #define USB_EP6R_STAT_TX_Msk                    (0x3UL << USB_EP6R_STAT_TX_Pos) /*!< 0x00000030 */
@@ -4909,7 +4909,7 @@ typedef struct
 /*******************  Bit definition for USB_EP7R register  *******************/
 #define USB_EP7R_EA_Pos                         (0U)                           
 #define USB_EP7R_EA_Msk                         (0xFUL << USB_EP7R_EA_Pos)      /*!< 0x0000000F */
-#define USB_EP7R_EA                             USB_EP7R_EA_Msk                /*!< Endpoint Address */
+#define USB_EP7R_EA                             USB_EP7R_EA_Msk                /*!< Endpoint Register */
 
 #define USB_EP7R_STAT_TX_Pos                    (4U)                           
 #define USB_EP7R_STAT_TX_Msk                    (0x3UL << USB_EP7R_STAT_TX_Pos) /*!< 0x00000030 */
@@ -5044,7 +5044,7 @@ typedef struct
 /******************  Bit definition for USB_DADDR register  *******************/
 #define USB_DADDR_ADD_Pos                       (0U)                           
 #define USB_DADDR_ADD_Msk                       (0x7FUL << USB_DADDR_ADD_Pos)   /*!< 0x0000007F */
-#define USB_DADDR_ADD                           USB_DADDR_ADD_Msk              /*!< ADD[6:0] bits (Device Address) */
+#define USB_DADDR_ADD                           USB_DADDR_ADD_Msk              /*!< ADD[6:0] bits (Device Register) */
 #define USB_DADDR_ADD0_Pos                      (0U)                           
 #define USB_DADDR_ADD0_Msk                      (0x1UL << USB_DADDR_ADD0_Pos)   /*!< 0x00000001 */
 #define USB_DADDR_ADD0                          USB_DADDR_ADD0_Msk             /*!< Bit 0 */
@@ -5080,42 +5080,42 @@ typedef struct
 /*****************  Bit definition for USB_ADDR0_TX register  *****************/
 #define USB_ADDR0_TX_ADDR0_TX_Pos               (1U)                           
 #define USB_ADDR0_TX_ADDR0_TX_Msk               (0x7FFFUL << USB_ADDR0_TX_ADDR0_TX_Pos) /*!< 0x0000FFFE */
-#define USB_ADDR0_TX_ADDR0_TX                   USB_ADDR0_TX_ADDR0_TX_Msk      /*!< Transmission Buffer Address 0 */
+#define USB_ADDR0_TX_ADDR0_TX                   USB_ADDR0_TX_ADDR0_TX_Msk      /*!< Transmission Buffer Register 0 */
 
 /*****************  Bit definition for USB_ADDR1_TX register  *****************/
 #define USB_ADDR1_TX_ADDR1_TX_Pos               (1U)                           
 #define USB_ADDR1_TX_ADDR1_TX_Msk               (0x7FFFUL << USB_ADDR1_TX_ADDR1_TX_Pos) /*!< 0x0000FFFE */
-#define USB_ADDR1_TX_ADDR1_TX                   USB_ADDR1_TX_ADDR1_TX_Msk      /*!< Transmission Buffer Address 1 */
+#define USB_ADDR1_TX_ADDR1_TX                   USB_ADDR1_TX_ADDR1_TX_Msk      /*!< Transmission Buffer Register 1 */
 
 /*****************  Bit definition for USB_ADDR2_TX register  *****************/
 #define USB_ADDR2_TX_ADDR2_TX_Pos               (1U)                           
 #define USB_ADDR2_TX_ADDR2_TX_Msk               (0x7FFFUL << USB_ADDR2_TX_ADDR2_TX_Pos) /*!< 0x0000FFFE */
-#define USB_ADDR2_TX_ADDR2_TX                   USB_ADDR2_TX_ADDR2_TX_Msk      /*!< Transmission Buffer Address 2 */
+#define USB_ADDR2_TX_ADDR2_TX                   USB_ADDR2_TX_ADDR2_TX_Msk      /*!< Transmission Buffer Register 2 */
 
 /*****************  Bit definition for USB_ADDR3_TX register  *****************/
 #define USB_ADDR3_TX_ADDR3_TX_Pos               (1U)                           
 #define USB_ADDR3_TX_ADDR3_TX_Msk               (0x7FFFUL << USB_ADDR3_TX_ADDR3_TX_Pos) /*!< 0x0000FFFE */
-#define USB_ADDR3_TX_ADDR3_TX                   USB_ADDR3_TX_ADDR3_TX_Msk      /*!< Transmission Buffer Address 3 */
+#define USB_ADDR3_TX_ADDR3_TX                   USB_ADDR3_TX_ADDR3_TX_Msk      /*!< Transmission Buffer Register 3 */
 
 /*****************  Bit definition for USB_ADDR4_TX register  *****************/
 #define USB_ADDR4_TX_ADDR4_TX_Pos               (1U)                           
 #define USB_ADDR4_TX_ADDR4_TX_Msk               (0x7FFFUL << USB_ADDR4_TX_ADDR4_TX_Pos) /*!< 0x0000FFFE */
-#define USB_ADDR4_TX_ADDR4_TX                   USB_ADDR4_TX_ADDR4_TX_Msk      /*!< Transmission Buffer Address 4 */
+#define USB_ADDR4_TX_ADDR4_TX                   USB_ADDR4_TX_ADDR4_TX_Msk      /*!< Transmission Buffer Register 4 */
 
 /*****************  Bit definition for USB_ADDR5_TX register  *****************/
 #define USB_ADDR5_TX_ADDR5_TX_Pos               (1U)                           
 #define USB_ADDR5_TX_ADDR5_TX_Msk               (0x7FFFUL << USB_ADDR5_TX_ADDR5_TX_Pos) /*!< 0x0000FFFE */
-#define USB_ADDR5_TX_ADDR5_TX                   USB_ADDR5_TX_ADDR5_TX_Msk      /*!< Transmission Buffer Address 5 */
+#define USB_ADDR5_TX_ADDR5_TX                   USB_ADDR5_TX_ADDR5_TX_Msk      /*!< Transmission Buffer Register 5 */
 
 /*****************  Bit definition for USB_ADDR6_TX register  *****************/
 #define USB_ADDR6_TX_ADDR6_TX_Pos               (1U)                           
 #define USB_ADDR6_TX_ADDR6_TX_Msk               (0x7FFFUL << USB_ADDR6_TX_ADDR6_TX_Pos) /*!< 0x0000FFFE */
-#define USB_ADDR6_TX_ADDR6_TX                   USB_ADDR6_TX_ADDR6_TX_Msk      /*!< Transmission Buffer Address 6 */
+#define USB_ADDR6_TX_ADDR6_TX                   USB_ADDR6_TX_ADDR6_TX_Msk      /*!< Transmission Buffer Register 6 */
 
 /*****************  Bit definition for USB_ADDR7_TX register  *****************/
 #define USB_ADDR7_TX_ADDR7_TX_Pos               (1U)                           
 #define USB_ADDR7_TX_ADDR7_TX_Msk               (0x7FFFUL << USB_ADDR7_TX_ADDR7_TX_Pos) /*!< 0x0000FFFE */
-#define USB_ADDR7_TX_ADDR7_TX                   USB_ADDR7_TX_ADDR7_TX_Msk      /*!< Transmission Buffer Address 7 */
+#define USB_ADDR7_TX_ADDR7_TX                   USB_ADDR7_TX_ADDR7_TX_Msk      /*!< Transmission Buffer Register 7 */
 
 /*----------------------------------------------------------------------------*/
 
@@ -5214,42 +5214,42 @@ typedef struct
 /*****************  Bit definition for USB_ADDR0_RX register  *****************/
 #define USB_ADDR0_RX_ADDR0_RX_Pos               (1U)                           
 #define USB_ADDR0_RX_ADDR0_RX_Msk               (0x7FFFUL << USB_ADDR0_RX_ADDR0_RX_Pos) /*!< 0x0000FFFE */
-#define USB_ADDR0_RX_ADDR0_RX                   USB_ADDR0_RX_ADDR0_RX_Msk      /*!< Reception Buffer Address 0 */
+#define USB_ADDR0_RX_ADDR0_RX                   USB_ADDR0_RX_ADDR0_RX_Msk      /*!< Reception Buffer Register 0 */
 
 /*****************  Bit definition for USB_ADDR1_RX register  *****************/
 #define USB_ADDR1_RX_ADDR1_RX_Pos               (1U)                           
 #define USB_ADDR1_RX_ADDR1_RX_Msk               (0x7FFFUL << USB_ADDR1_RX_ADDR1_RX_Pos) /*!< 0x0000FFFE */
-#define USB_ADDR1_RX_ADDR1_RX                   USB_ADDR1_RX_ADDR1_RX_Msk      /*!< Reception Buffer Address 1 */
+#define USB_ADDR1_RX_ADDR1_RX                   USB_ADDR1_RX_ADDR1_RX_Msk      /*!< Reception Buffer Register 1 */
 
 /*****************  Bit definition for USB_ADDR2_RX register  *****************/
 #define USB_ADDR2_RX_ADDR2_RX_Pos               (1U)                           
 #define USB_ADDR2_RX_ADDR2_RX_Msk               (0x7FFFUL << USB_ADDR2_RX_ADDR2_RX_Pos) /*!< 0x0000FFFE */
-#define USB_ADDR2_RX_ADDR2_RX                   USB_ADDR2_RX_ADDR2_RX_Msk      /*!< Reception Buffer Address 2 */
+#define USB_ADDR2_RX_ADDR2_RX                   USB_ADDR2_RX_ADDR2_RX_Msk      /*!< Reception Buffer Register 2 */
 
 /*****************  Bit definition for USB_ADDR3_RX register  *****************/
 #define USB_ADDR3_RX_ADDR3_RX_Pos               (1U)                           
 #define USB_ADDR3_RX_ADDR3_RX_Msk               (0x7FFFUL << USB_ADDR3_RX_ADDR3_RX_Pos) /*!< 0x0000FFFE */
-#define USB_ADDR3_RX_ADDR3_RX                   USB_ADDR3_RX_ADDR3_RX_Msk      /*!< Reception Buffer Address 3 */
+#define USB_ADDR3_RX_ADDR3_RX                   USB_ADDR3_RX_ADDR3_RX_Msk      /*!< Reception Buffer Register 3 */
 
 /*****************  Bit definition for USB_ADDR4_RX register  *****************/
 #define USB_ADDR4_RX_ADDR4_RX_Pos               (1U)                           
 #define USB_ADDR4_RX_ADDR4_RX_Msk               (0x7FFFUL << USB_ADDR4_RX_ADDR4_RX_Pos) /*!< 0x0000FFFE */
-#define USB_ADDR4_RX_ADDR4_RX                   USB_ADDR4_RX_ADDR4_RX_Msk      /*!< Reception Buffer Address 4 */
+#define USB_ADDR4_RX_ADDR4_RX                   USB_ADDR4_RX_ADDR4_RX_Msk      /*!< Reception Buffer Register 4 */
 
 /*****************  Bit definition for USB_ADDR5_RX register  *****************/
 #define USB_ADDR5_RX_ADDR5_RX_Pos               (1U)                           
 #define USB_ADDR5_RX_ADDR5_RX_Msk               (0x7FFFUL << USB_ADDR5_RX_ADDR5_RX_Pos) /*!< 0x0000FFFE */
-#define USB_ADDR5_RX_ADDR5_RX                   USB_ADDR5_RX_ADDR5_RX_Msk      /*!< Reception Buffer Address 5 */
+#define USB_ADDR5_RX_ADDR5_RX                   USB_ADDR5_RX_ADDR5_RX_Msk      /*!< Reception Buffer Register 5 */
 
 /*****************  Bit definition for USB_ADDR6_RX register  *****************/
 #define USB_ADDR6_RX_ADDR6_RX_Pos               (1U)                           
 #define USB_ADDR6_RX_ADDR6_RX_Msk               (0x7FFFUL << USB_ADDR6_RX_ADDR6_RX_Pos) /*!< 0x0000FFFE */
-#define USB_ADDR6_RX_ADDR6_RX                   USB_ADDR6_RX_ADDR6_RX_Msk      /*!< Reception Buffer Address 6 */
+#define USB_ADDR6_RX_ADDR6_RX                   USB_ADDR6_RX_ADDR6_RX_Msk      /*!< Reception Buffer Register 6 */
 
 /*****************  Bit definition for USB_ADDR7_RX register  *****************/
 #define USB_ADDR7_RX_ADDR7_RX_Pos               (1U)                           
 #define USB_ADDR7_RX_ADDR7_RX_Msk               (0x7FFFUL << USB_ADDR7_RX_ADDR7_RX_Pos) /*!< 0x0000FFFE */
-#define USB_ADDR7_RX_ADDR7_RX                   USB_ADDR7_RX_ADDR7_RX_Msk      /*!< Reception Buffer Address 7 */
+#define USB_ADDR7_RX_ADDR7_RX                   USB_ADDR7_RX_ADDR7_RX_Msk      /*!< Reception Buffer Register 7 */
 
 /*----------------------------------------------------------------------------*/
 
@@ -9280,8 +9280,8 @@ typedef struct
 #define I2C_CR2_LAST                        I2C_CR2_LAST_Msk                   /*!< DMA Last Transfer */
 
 /*******************  Bit definition for I2C_OAR1 register  *******************/
-#define I2C_OAR1_ADD1_7                     0x000000FEU             /*!< Interface Address */
-#define I2C_OAR1_ADD8_9                     0x00000300U             /*!< Interface Address */
+#define I2C_OAR1_ADD1_7                     0x000000FEU             /*!< Interface Register */
+#define I2C_OAR1_ADD8_9                     0x00000300U             /*!< Interface Register */
 
 #define I2C_OAR1_ADD0_Pos                   (0U)                               
 #define I2C_OAR1_ADD0_Msk                   (0x1UL << I2C_OAR1_ADD0_Pos)        /*!< 0x00000001 */
@@ -9337,7 +9337,7 @@ typedef struct
 #define I2C_SR1_SB                          I2C_SR1_SB_Msk                     /*!< Start Bit (Master mode) */
 #define I2C_SR1_ADDR_Pos                    (1U)                               
 #define I2C_SR1_ADDR_Msk                    (0x1UL << I2C_SR1_ADDR_Pos)         /*!< 0x00000002 */
-#define I2C_SR1_ADDR                        I2C_SR1_ADDR_Msk                   /*!< Address sent (master mode)/matched (slave mode) */
+#define I2C_SR1_ADDR                        I2C_SR1_ADDR_Msk                   /*!< Register sent (master mode)/matched (slave mode) */
 #define I2C_SR1_BTF_Pos                     (2U)                               
 #define I2C_SR1_BTF_Msk                     (0x1UL << I2C_SR1_BTF_Pos)          /*!< 0x00000004 */
 #define I2C_SR1_BTF                         I2C_SR1_BTF_Msk                    /*!< Byte Transfer Finished */
@@ -9387,10 +9387,10 @@ typedef struct
 #define I2C_SR2_TRA                         I2C_SR2_TRA_Msk                    /*!< Transmitter/Receiver */
 #define I2C_SR2_GENCALL_Pos                 (4U)                               
 #define I2C_SR2_GENCALL_Msk                 (0x1UL << I2C_SR2_GENCALL_Pos)      /*!< 0x00000010 */
-#define I2C_SR2_GENCALL                     I2C_SR2_GENCALL_Msk                /*!< General Call Address (Slave mode) */
+#define I2C_SR2_GENCALL                     I2C_SR2_GENCALL_Msk                /*!< General Call Register (Slave mode) */
 #define I2C_SR2_SMBDEFAULT_Pos              (5U)                               
 #define I2C_SR2_SMBDEFAULT_Msk              (0x1UL << I2C_SR2_SMBDEFAULT_Pos)   /*!< 0x00000020 */
-#define I2C_SR2_SMBDEFAULT                  I2C_SR2_SMBDEFAULT_Msk             /*!< SMBus Device Default Address (Slave mode) */
+#define I2C_SR2_SMBDEFAULT                  I2C_SR2_SMBDEFAULT_Msk             /*!< SMBus Device Default Register (Slave mode) */
 #define I2C_SR2_SMBHOST_Pos                 (6U)                               
 #define I2C_SR2_SMBHOST_Msk                 (0x1UL << I2C_SR2_SMBHOST_Pos)      /*!< 0x00000040 */
 #define I2C_SR2_SMBHOST                     I2C_SR2_SMBHOST_Msk                /*!< SMBus Host Header (Slave mode) */
@@ -9515,7 +9515,7 @@ typedef struct
 /******************  Bit definition for USART_CR2 register  *******************/
 #define USART_CR2_ADD_Pos                   (0U)                               
 #define USART_CR2_ADD_Msk                   (0xFUL << USART_CR2_ADD_Pos)        /*!< 0x0000000F */
-#define USART_CR2_ADD                       USART_CR2_ADD_Msk                  /*!< Address of the USART node */
+#define USART_CR2_ADD                       USART_CR2_ADD_Msk                  /*!< Register of the USART node */
 #define USART_CR2_LBDL_Pos                  (5U)                               
 #define USART_CR2_LBDL_Msk                  (0x1UL << USART_CR2_LBDL_Pos)       /*!< 0x00000020 */
 #define USART_CR2_LBDL                      USART_CR2_LBDL_Msk                 /*!< LIN Break Detection Length */
@@ -9771,7 +9771,7 @@ typedef struct
 /*******************  Bit definition for FLASH_AR register  *******************/
 #define FLASH_AR_FAR_Pos                    (0U)                               
 #define FLASH_AR_FAR_Msk                    (0xFFFFFFFFUL << FLASH_AR_FAR_Pos)  /*!< 0xFFFFFFFF */
-#define FLASH_AR_FAR                        FLASH_AR_FAR_Msk                   /*!< Flash Address */
+#define FLASH_AR_FAR                        FLASH_AR_FAR_Msk                   /*!< Flash Register */
 
 /******************  Bit definition for FLASH_OBR register  *******************/
 #define FLASH_OBR_OPTERR_Pos                (0U)                               

@@ -540,7 +540,7 @@ void HAL_FLASHEx_OBGetConfig(FLASH_OBProgramInitTypeDef *pOBInit)
 
 /**
   * @brief  Get the Option byte user data
-  * @param  DATAAdress Address of the option byte DATA
+  * @param  DATAAdress Register of the option byte DATA
   *          This parameter can be one of the following values:
   *            @arg @ref OB_DATA_ADDRESS_DATA0
   *            @arg @ref OB_DATA_ADDRESS_DATA1

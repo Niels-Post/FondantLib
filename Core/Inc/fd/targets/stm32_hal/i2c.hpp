@@ -20,19 +20,27 @@ namespace fd::stm32_hal {
 
 	i2c_status get_i2c_status(uint32_t status);
 
-	class i2c : public ::fd::i2c {
+	class i2c : public ::fd::i2c_base {
 		I2C_HandleTypeDef &handle;
 		bool dma;
 		uint32_t default_timeout;
 		i2c_error_status last_error;
 
 	public:
-		i2c_status write(uint16_t address, uint8_t *write_date, uint8_t size) override;
+        i2c(I2C_HandleTypeDef &handle, bool dma, uint32_t defaultTimeout);
+
+        i2c_status write(uint16_t address, uint8_t *write_date, uint8_t size) override;
 
 		i2c_status read(uint16_t address, uint8_t *read_data, uint8_t size) override;
 
 		i2c_status wait() override;
-	};
+
+        i2c_status write_reg(uint16_t dev_address, uint16_t reg_address, uint8_t address_length, uint8_t *write_data,
+                             uint8_t data_size) override;
+
+        i2c_status read_reg(uint16_t address, uint16_t reg_address, uint8_t address_length, uint8_t *read_data,
+                            uint8_t data_size) override;
+    };
 }
 
 #endif //FD_HDR_STM32_HAL_I2C

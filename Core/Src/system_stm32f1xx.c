@@ -368,7 +368,7 @@ void SystemInit_ExtMemCtl(void)
   (void)(tmpreg);
   
 /* ---------------  SRAM Data lines, NOE and NWE configuration ---------------*/
-/*----------------  SRAM Address lines configuration -------------------------*/
+/*----------------  SRAM Register lines configuration -------------------------*/
 /*----------------  NOE and NWE configuration --------------------------------*/  
 /*----------------  NE3 configuration ----------------------------------------*/
 /*----------------  NBL0, NBL1 configuration ---------------------------------*/
