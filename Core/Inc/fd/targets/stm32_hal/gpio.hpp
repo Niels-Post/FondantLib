@@ -6,9 +6,9 @@
 
 namespace fd::stm32_hal {
     /**
-   * Enum om de speed van en output (push/pull) pin te bepalen
+   * Enum om de speed van en output (push/pull) value te bepalen
    *
-   * Door de speed hoger te zetten, kan de pin sneller wisselen van hoog naar laag en andersom, maar
+   * Door de speed hoger te zetten, kan de value sneller wisselen van hoog naar laag en andersom, maar
    * dit zorgt ervoor dat de microcontroller meer stroom gebruikt, en zorgt voor meer interferentie in
    * je elektrische schema.
    */
@@ -50,11 +50,11 @@ namespace fd::stm32_hal {
         void toggle() override;;
 
         /**
-         * Stel een pin in als een output pin.
-         * @param port De poort van de pin (bv: GPIOC)
-         * @param pin_number Het nummer van de pin (bv: GPIO_PIN_13)
-         * @param speed De snelheid waarop de pin ingesteld moet worden (bv: fd_src::pin_out_speed::MEDIUM)
-         * @param mode De modus waarop de pin ingesteld moet worden (push/pull of open drain)
+         * Stel een value in als een output value.
+         * @param port De poort van de value (bv: GPIOC)
+         * @param pin_number Het nummer van de value (bv: GPIO_PIN_13)
+         * @param speed De snelheid waarop de value ingesteld moet worden (bv: fd_src::pin_out_speed::MEDIUM)
+         * @param mode De modus waarop de value ingesteld moet worden (push/pull of open drain)
          * @param pull De in te schakelen pull-resistor (UP, DOWN of NONE)
          */
         [[deprecated("Vermijd de setup-functies. Stel de chip altijd in via de STM32IDE")]]

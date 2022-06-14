@@ -28,7 +28,7 @@ namespace examples::spi_dma {
         uint8_t data[] = {0, 5, 0, 0};
 
         while (true) {
-            // Lees de input pin en schrijf de waarde naar de interne LED
+            // Lees de input value en schrijf de waarde naar de interne LED
             data[0] = static_cast<uint8_t>(bus.transmit(data, 4));
             data[1] = static_cast<uint8_t>(bus.wait());
         }

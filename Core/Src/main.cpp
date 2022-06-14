@@ -36,8 +36,16 @@ int fd_main() {
 //    examples::i2c_hd44780::run();
 
     // Voorbeeld 8: I2C_HHD44780_BMP280
-    examples::i2c_bme280_hd44780::setup();
-    examples::i2c_bme280_hd44780::run();
+//    examples::i2c_bme280_hd44780::setup();
+//    examples::i2c_bme280_hd44780::run();
+
+    // Voorbeeld 9: I2C_HHD44780_MPU6050
+//    examples::i2c_mpu6050_hd44780::setup();
+//    examples::i2c_mpu6050_hd44780::run();
+
+    // Voorbeeld 10: Matrix Keypad
+    examples::matrix_keypad::setup();
+    examples::matrix_keypad::run();
 
     return 0;
 }

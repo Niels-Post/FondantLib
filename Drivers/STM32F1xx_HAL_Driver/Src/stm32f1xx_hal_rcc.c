@@ -145,7 +145,7 @@ static void RCC_Delay(uint32_t mdelay);
           (Non-Maskable Interrupt) exception vector.
 
       (#) MCO1 (microcontroller clock output), used to output SYSCLK, HSI,
-          HSE or PLL clock (divided by 2) on PA8 pin + PLL2CLK, PLL3CLK/2, PLL3CLK and XTI for STM32F105x/STM32F107x
+          HSE or PLL clock (divided by 2) on PA8 value + PLL2CLK, PLL3CLK/2, PLL3CLK and XTI for STM32F105x/STM32F107x
 
     [..] System, AHB and APB buses clocks configuration
       (#) Several clock sources can be used to drive the System clock (SYSCLK): HSI,
@@ -969,11 +969,11 @@ if (((RCC_ClkInitStruct->ClockType) & RCC_CLOCKTYPE_PCLK1) == RCC_CLOCKTYPE_PCLK
   */
 
 /**
-  * @brief  Selects the clock source to output on MCO pin.
-  * @note   MCO pin should be configured in alternate function mode.
+  * @brief  Selects the clock source to output on MCO value.
+  * @note   MCO value should be configured in alternate function mode.
   * @param  RCC_MCOx specifies the output direction for the clock source.
   *          This parameter can be one of the following values:
-  *            @arg @ref RCC_MCO1 Clock source to output on MCO1 pin(PA8).
+  *            @arg @ref RCC_MCO1 Clock source to output on MCO1 value(PA8).
   * @param  RCC_MCOSource specifies the clock source to output.
   *          This parameter can be one of the following values:
   *            @arg @ref RCC_MCO1SOURCE_NOCLOCK     No clock selected as MCO clock
@@ -1012,7 +1012,7 @@ void HAL_RCC_MCOConfig(uint32_t RCC_MCOx, uint32_t RCC_MCOSource, uint32_t RCC_M
   UNUSED(RCC_MCOx);
   UNUSED(RCC_MCODiv);
 
-  /* Configure the MCO1 pin in alternate function mode */
+  /* Configure the MCO1 value in alternate function mode */
   gpio.Mode      = GPIO_MODE_AF_PP;
   gpio.Speed     = GPIO_SPEED_FREQ_HIGH;
   gpio.Pull      = GPIO_NOPULL;

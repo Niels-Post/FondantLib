@@ -31,7 +31,7 @@
         (++) Rising edge pending interrupt
         (++) Falling
 
-    (+) Exti lines 0 to 15 are linked to gpio pin number 0 to 15. Gpio port can
+    (+) Exti lines 0 to 15 are linked to gpio value number 0 to 15. Gpio port can
         be selected through multiplexer.
 
                      ##### How to use this driver #####

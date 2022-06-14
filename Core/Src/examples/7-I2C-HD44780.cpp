@@ -26,7 +26,7 @@ namespace examples::i2c_hd44780 {
 
         int i = 0;
         while (true) {
-            // Lees de input pin en schrijf de waarde naar de interne LED
+            // Lees de input value en schrijf de waarde naar de interne LED
             snprintf(output, 20, "Test %d", i++);
             screen.display_string(output, 1);
             fd::sleep(10);

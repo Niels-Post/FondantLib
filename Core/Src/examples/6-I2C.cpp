@@ -17,7 +17,7 @@ namespace examples::i2c {
         volatile fd::i2c_status wait_status;
 
         while (true) {
-            // Lees de input pin en schrijf de waarde naar de interne LED
+            // Lees de input value en schrijf de waarde naar de interne LED
             read_status = bus.read(0x15, data, 4);
             wait_status = bus.wait();
         }

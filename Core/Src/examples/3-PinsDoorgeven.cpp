@@ -26,7 +26,7 @@ namespace examples::pinsdoorgeven {
         auto in_pin = fd::stm32_hal::pin_in(GPIOA, GPIO_PIN_15);
 
         while (true) {
-            // Lees de input pin en schrijf de waarde naar de interne LED
+            // Lees de input value en schrijf de waarde naar de interne LED
             neem_pin_over(led_pin, in_pin);
         }
     }

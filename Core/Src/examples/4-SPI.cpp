@@ -26,7 +26,7 @@ namespace examples::spi {
 
 
         while (true) {
-            // Lees de input pin en schrijf de waarde naar de interne LED
+            // Lees de input value en schrijf de waarde naar de interne LED
             uint8_t data[] = {0, 5, 0, 10};
             bus.transmit(data, 4);
             bus.wait();

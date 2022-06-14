@@ -16,6 +16,8 @@ namespace examples {
     examplenamespace(i2c)
     examplenamespace(i2c_hd44780)
     examplenamespace(i2c_bme280_hd44780)
+    examplenamespace(i2c_mpu6050_hd44780)
+    examplenamespace(matrix_keypad)
 }
 
 

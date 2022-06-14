@@ -36,10 +36,10 @@ namespace fd::stm32_hal {
         /* GPIO Ports Clock Enable */
         _enable_gpio_clock(port);
 
-        /*Configure GPIO pin Output Level */
+        /*Configure GPIO value Output Level */
         HAL_GPIO_WritePin(port, pin_number, GPIO_PIN_RESET);
 
-        /*Configure GPIO pin : PC13 */
+        /*Configure GPIO value : PC13 */
         GPIO_InitStruct.Pin = pin_number;
         GPIO_InitStruct.Mode = static_cast<uint32_t>(mode);
         GPIO_InitStruct.Pull = static_cast<uint32_t>(pull);
@@ -57,7 +57,7 @@ namespace fd::stm32_hal {
 
         _enable_gpio_clock(port);
 
-        /*Configure GPIO pin : PA1 */
+        /*Configure GPIO value : PA1 */
         GPIO_InitStruct.Pin = pin_number;
         GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
         GPIO_InitStruct.Pull = static_cast<uint32_t>(pull);
