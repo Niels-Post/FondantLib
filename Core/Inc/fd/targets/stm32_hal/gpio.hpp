@@ -18,11 +18,17 @@ namespace fd::stm32_hal {
         LOW = GPIO_SPEED_LOW
     };
 
+	/**
+	 * Enum om de 2 modi van een stm32 pin out te onderscheiden
+	 */
     enum class pin_out_mode : uint32_t {
         OPEN_DRAIN = GPIO_MODE_OUTPUT_OD,
         PUSH_PULL = GPIO_MODE_OUTPUT_PP
     };
 
+	/**
+	 * Enum om een pullup/pulldown in te stellen op een Input of OC pin.
+	 */
     enum class pin_pull : uint32_t {
         UP = GPIO_PULLUP,
         DOWN = GPIO_PULLDOWN,

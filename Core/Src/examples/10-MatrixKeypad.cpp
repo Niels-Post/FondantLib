@@ -45,9 +45,9 @@ namespace examples::matrix_keypad {
 
         auto bus     = fd::stm32_hal::i2c(hi2c1, false, 1000);
         auto screen  = fd::peripherals::hd44780(bus, 4, 20, 0x27);
-
         auto keypad = fd::peripherals::keypad_matrix_4x4{r1,r2,r3,r4,c1,c2,c3,c4};
 
+		bus.write()
         char output[20];
 
         while (true) {

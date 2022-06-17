@@ -22,6 +22,7 @@ fd::stm32_hal::i2c::i2c(I2C_HandleTypeDef &handle, bool dma, uint32_t defaultTim
                                                                                         default_timeout(
                                                                                                 defaultTimeout) {}
 
+
 fd::i2c_status fd::stm32_hal::i2c::write(uint16_t address, uint8_t *write_date, uint8_t size) {
 	uint32_t resultStatus;
 	if (dma) {

@@ -49,6 +49,11 @@ const uint8_t Rw = 0b00000010; // Read/Write bit
 const uint8_t Rs = 0b00000001; // Register select bit
 
 namespace fd::peripherals {
+	/**
+	 * Klasse voor een HD44780 character display.
+	 *
+	 * Het scherm wordt aangestuurd via een I2C IO extender "backpack"
+	 */
     class hd44780 {
     private:
         fd::i2c_base &i2c_bus;
@@ -56,20 +61,37 @@ namespace fd::peripherals {
         uint8_t cols;
         uint16_t address;
 
-    public:
+		void strobe(uint8_t data);
+
+		void write_four_bits(uint8_t data);
+
+		void write(uint8_t cmd, uint8_t mode = 0);
+
+		void i2c_write(uint8_t data);
+
+
+	public:
+		/**
+		 * Maak een niewe HD44780 interface aan. Hiervoor heb je de I2C "backpack" nodig
+		 * @param i2CBus Bus waarop het scherm is aangesloten
+		 * @param rows Aantal rijen wat het scherm heeft
+		 * @param cols Aantal kolommen (karakters) wat het scherm heeft
+		 * @param address I2C Adres van het scherm (zie datasheet van de backpack voor meer informatie)
+		 */
         hd44780(i2c_base &i2CBus, uint8_t rows, uint8_t cols, uint16_t address);
 
-        void strobe(uint8_t data);
-
-        void write_four_bits(uint8_t data);
-
-        void write(uint8_t cmd, uint8_t mode = 0);
-
+		/**
+		 * Weergeef een string op het karakterdisplay.
+		 * @param str String om te weergeven (null-terminated)
+		 * @param line Regel om de string op te weergeven (begint op 1)
+		 */
         void display_string(const char* str, uint8_t line);
 
+		/**
+		 * Maak het scherm leeg
+		 */
         void clear();
 
-        void i2c_write(uint8_t data);
     };
 }
 

@@ -14,9 +14,8 @@ fd::spi_status fd::stm32_hal::get_spi_status(int status) {
         case HAL_BUSY:
             return fd::spi_status::BUSY;
         case HAL_ERROR:
-            return fd::spi_status::ERROR;
         case HAL_TIMEOUT:
-            return fd::spi_status::TIMEOUT;
+            return fd::spi_status::ERROR;
         default:
             return fd::spi_status::ERROR;
     }
