@@ -1,6 +1,6 @@
 #include <examples.hpp>
 
-// Include basisfuncties van fondant (nodig voor fd_src::sleep)
+// Include basisfuncties van fondant (nodig voor fd::sleep)
 #include <fd/fondant.hpp>
 
 // Include de GPIO module

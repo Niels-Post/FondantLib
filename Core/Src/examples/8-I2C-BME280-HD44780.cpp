@@ -1,10 +1,12 @@
-#include <stm32f1xx_hal.h>
-#include <fd/i2c.hpp>
-#include <cstring>
+#include <fd/fondant_targets.hpp>
 #include <cstdio>
+#include <fd/fondant.hpp>
 #include "fd/peripherals/displays/hd44780.hpp"
-#include "fd/targets/base/core.hpp"
 #include "fd/peripherals/sensors/bme280.hpp"
+
+#ifdef FONDANT_HW_I2C
+
+#include <fd/i2c.hpp>
 
 extern I2C_HandleTypeDef hi2c1;
 namespace examples::i2c_bme280_hd44780 {
@@ -14,40 +16,40 @@ namespace examples::i2c_bme280_hd44780 {
 
 
     void run() {
-        // Maak een pin_out aan voor PC13
-        auto bus     = fd::stm32_hal::i2c(hi2c1, false, 1000);
-        auto screen  = fd::peripherals::hd44780(bus, 4, 20, 0x27);
-        auto sensor  = fd::peripherals::bme280(bus, 0x76);
+        // Maak het busobject voor de bus waar het scherm en de sensor op zitten
+        auto bus = fd::stm32_hal::i2c(hi2c1, false, 1000);
 
-        uint8_t data[] = {0, 5, 0, 0};
+        // Maak het schermobject aan
+        auto screen = fd::peripherals::hd44780(bus, 4, 20, 0x27);
 
-        volatile fd::i2c_status read_status;
-        volatile fd::i2c_status wait_status;
+        // Maak het sensorobject voor de BME280 aan
+        auto sensor = fd::peripherals::bme280(bus, 0x76);
 
         char output[20];
 
-        int i = 0;
         while (true) {
-            // Lees de input value en schrijf de waarde naar de interne LED
+            // Lees de data van de BME280 sensor
             sensor.readData();
-            float temp1   = sensor.getTemperature();
-            float pres1   = sensor.getPressure();
-            float hum1   = sensor.getHumidity();
-            uint8_t chipid1 = sensor.readRegister(fd::peripherals::bme280::Register::ID);
 
-            fd::sleep(100);
+            // Haal de berekende waarden van de sensor op
+            uint8_t chipid = sensor.readRegister(fd::peripherals::bme280::Register::ID);
+            float   temp   = sensor.getTemperature();
+            float   pres   = sensor.getPressure();
+            float   hum    = sensor.getHumidity();
 
-
-            snprintf(output, 20, "ID: %d   ", chipid1);
+            // Schrijf de opgehaalde waarden naar het scherm
+            snprintf(output, 20, "ID: %d   ", chipid);
             screen.display_string(output, 1);
-            snprintf(output, 20, "Temp: %.2f   ", temp1);
+            snprintf(output, 20, "Temp: %.2f   ", temp);
             screen.display_string(output, 2);
-            snprintf(output, 20, "Pres: %.2f   ", pres1);
+            snprintf(output, 20, "Pres: %.2f   ", pres);
             screen.display_string(output, 3);
-            snprintf(output, 20, "Hum: %.2f   ", hum1);
+            snprintf(output, 20, "Hum: %.2f   ", hum);
             screen.display_string(output, 4);
             fd::sleep(100);
         }
     }
 
 }
+
+#endif

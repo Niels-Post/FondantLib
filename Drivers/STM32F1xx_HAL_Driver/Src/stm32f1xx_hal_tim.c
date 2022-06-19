@@ -5304,7 +5304,7 @@ HAL_StatusTypeDef HAL_TIM_ConfigClockSource(TIM_HandleTypeDef *htim, TIM_ClockCo
   * @param  TI1_Selection Indicate whether or not channel 1 is connected to the
   *         output of a XOR gate.
   *          This parameter can be one of the following values:
-  *            @arg TIM_TI1SELECTION_CH1: The TIMx_CH1 value is connected to TI1 input
+  *            @arg TIM_TI1SELECTION_CH1: The TIMx_CH1 pin is connected to TI1 input
   *            @arg TIM_TI1SELECTION_XORCOMBINATION: The TIMx_CH1, CH2 and CH3
   *            pins are connected to the TI1 input (XOR combination)
   * @retval HAL status

@@ -51,22 +51,22 @@ extern "C" {
   * @{
   */
 
-#define AFIO_EVENTOUT_PIN_0  AFIO_EVCR_PIN_PX0 /*!< EVENTOUT on value 0 */
-#define AFIO_EVENTOUT_PIN_1  AFIO_EVCR_PIN_PX1 /*!< EVENTOUT on value 1 */
-#define AFIO_EVENTOUT_PIN_2  AFIO_EVCR_PIN_PX2 /*!< EVENTOUT on value 2 */
-#define AFIO_EVENTOUT_PIN_3  AFIO_EVCR_PIN_PX3 /*!< EVENTOUT on value 3 */
-#define AFIO_EVENTOUT_PIN_4  AFIO_EVCR_PIN_PX4 /*!< EVENTOUT on value 4 */
-#define AFIO_EVENTOUT_PIN_5  AFIO_EVCR_PIN_PX5 /*!< EVENTOUT on value 5 */
-#define AFIO_EVENTOUT_PIN_6  AFIO_EVCR_PIN_PX6 /*!< EVENTOUT on value 6 */
-#define AFIO_EVENTOUT_PIN_7  AFIO_EVCR_PIN_PX7 /*!< EVENTOUT on value 7 */
-#define AFIO_EVENTOUT_PIN_8  AFIO_EVCR_PIN_PX8 /*!< EVENTOUT on value 8 */
-#define AFIO_EVENTOUT_PIN_9  AFIO_EVCR_PIN_PX9 /*!< EVENTOUT on value 9 */
-#define AFIO_EVENTOUT_PIN_10 AFIO_EVCR_PIN_PX10 /*!< EVENTOUT on value 10 */
-#define AFIO_EVENTOUT_PIN_11 AFIO_EVCR_PIN_PX11 /*!< EVENTOUT on value 11 */
-#define AFIO_EVENTOUT_PIN_12 AFIO_EVCR_PIN_PX12 /*!< EVENTOUT on value 12 */
-#define AFIO_EVENTOUT_PIN_13 AFIO_EVCR_PIN_PX13 /*!< EVENTOUT on value 13 */
-#define AFIO_EVENTOUT_PIN_14 AFIO_EVCR_PIN_PX14 /*!< EVENTOUT on value 14 */
-#define AFIO_EVENTOUT_PIN_15 AFIO_EVCR_PIN_PX15 /*!< EVENTOUT on value 15 */
+#define AFIO_EVENTOUT_PIN_0  AFIO_EVCR_PIN_PX0 /*!< EVENTOUT on pin 0 */
+#define AFIO_EVENTOUT_PIN_1  AFIO_EVCR_PIN_PX1 /*!< EVENTOUT on pin 1 */
+#define AFIO_EVENTOUT_PIN_2  AFIO_EVCR_PIN_PX2 /*!< EVENTOUT on pin 2 */
+#define AFIO_EVENTOUT_PIN_3  AFIO_EVCR_PIN_PX3 /*!< EVENTOUT on pin 3 */
+#define AFIO_EVENTOUT_PIN_4  AFIO_EVCR_PIN_PX4 /*!< EVENTOUT on pin 4 */
+#define AFIO_EVENTOUT_PIN_5  AFIO_EVCR_PIN_PX5 /*!< EVENTOUT on pin 5 */
+#define AFIO_EVENTOUT_PIN_6  AFIO_EVCR_PIN_PX6 /*!< EVENTOUT on pin 6 */
+#define AFIO_EVENTOUT_PIN_7  AFIO_EVCR_PIN_PX7 /*!< EVENTOUT on pin 7 */
+#define AFIO_EVENTOUT_PIN_8  AFIO_EVCR_PIN_PX8 /*!< EVENTOUT on pin 8 */
+#define AFIO_EVENTOUT_PIN_9  AFIO_EVCR_PIN_PX9 /*!< EVENTOUT on pin 9 */
+#define AFIO_EVENTOUT_PIN_10 AFIO_EVCR_PIN_PX10 /*!< EVENTOUT on pin 10 */
+#define AFIO_EVENTOUT_PIN_11 AFIO_EVCR_PIN_PX11 /*!< EVENTOUT on pin 11 */
+#define AFIO_EVENTOUT_PIN_12 AFIO_EVCR_PIN_PX12 /*!< EVENTOUT on pin 12 */
+#define AFIO_EVENTOUT_PIN_13 AFIO_EVCR_PIN_PX13 /*!< EVENTOUT on pin 13 */
+#define AFIO_EVENTOUT_PIN_14 AFIO_EVCR_PIN_PX14 /*!< EVENTOUT on pin 14 */
+#define AFIO_EVENTOUT_PIN_15 AFIO_EVCR_PIN_PX15 /*!< EVENTOUT on pin 15 */
 
 #define IS_AFIO_EVENTOUT_PIN(__PIN__) (((__PIN__) == AFIO_EVENTOUT_PIN_0) || \
                                        ((__PIN__) == AFIO_EVENTOUT_PIN_1) || \
@@ -293,7 +293,7 @@ extern "C" {
 
 /**
   * @brief Enable or disable the remapping of CAN alternate function CAN_RX and CAN_TX in devices with a single CAN interface.
-  * @note  CASE 2: CAN_RX mapped to PB8,  CAN_TX mapped to PB9 (not available on 36-value package)
+  * @note  CASE 2: CAN_RX mapped to PB8,  CAN_TX mapped to PB9 (not available on 36-pin package)
   * @retval None
   */
 #define __HAL_AFIO_REMAP_CAN1_2()  AFIO_REMAP_PARTIAL(AFIO_MAPR_CAN_REMAP_REMAP2, AFIO_MAPR_CAN_REMAP)
@@ -311,7 +311,7 @@ extern "C" {
   * @brief Enable the remapping of PD0 and PD1. When the HSE oscillator is not used
   *        (application running on internal 8 MHz RC) PD0 and PD1 can be mapped on OSC_IN and
   *        OSC_OUT. This is available only on 36, 48 and 64 pins packages (PD0 and PD1 are available
-  *        on 100-value and 144-value packages, no need for remapping).
+  *        on 100-pin and 144-pin packages, no need for remapping).
   * @note  ENABLE: PD0 remapped on OSC_IN, PD1 remapped on OSC_OUT.
   * @retval None
   */
@@ -321,7 +321,7 @@ extern "C" {
   * @brief Disable the remapping of PD0 and PD1. When the HSE oscillator is not used
   *        (application running on internal 8 MHz RC) PD0 and PD1 can be mapped on OSC_IN and
   *        OSC_OUT. This is available only on 36, 48 and 64 pins packages (PD0 and PD1 are available
-  *        on 100-value and 144-value packages, no need for remapping).
+  *        on 100-pin and 144-pin packages, no need for remapping).
   * @note  DISABLE: No remapping of PD0 and PD1
   * @retval None
   */
@@ -533,7 +533,7 @@ extern "C" {
 
 /**
   * @brief Enable the remapping of ADC2_ETRGREG (ADC 2 External trigger regular conversion).
-  * @note  ENABLE: PTP_PPS is output on PB5 value.
+  * @note  ENABLE: PTP_PPS is output on PB5 pin.
   * @note  This bit is available only in connectivity line devices and is reserved otherwise.
   * @retval None
   */
@@ -541,7 +541,7 @@ extern "C" {
 
 /**
   * @brief Disable the remapping of ADC2_ETRGREG (ADC 2 External trigger regular conversion).
-  * @note  DISABLE: PTP_PPS not output on PB5 value.
+  * @note  DISABLE: PTP_PPS not output on PB5 pin.
   * @note  This bit is available only in connectivity line devices and is reserved otherwise.
   * @retval None
   */
@@ -636,7 +636,7 @@ extern "C" {
 
 /**
   * @brief Controls the use of the optional FSMC_NADV signal.
-  * @note  DISCONNECTED: The NADV signal is not connected. The I/O value can be used by another peripheral.
+  * @note  DISCONNECTED: The NADV signal is not connected. The I/O pin can be used by another peripheral.
   * @retval None
   */
 #define __HAL_AFIO_FSMCNADV_DISCONNECTED() SET_BIT(AFIO->MAPR2, AFIO_MAPR2_FSMC_NADV_REMAP)

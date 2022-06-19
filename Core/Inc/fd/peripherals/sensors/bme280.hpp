@@ -23,14 +23,7 @@ namespace fd::peripherals {
         float calculated_hum;
 
         int32_t t_fine;
-    protected:
-        void calculateTemperature();
-        void calculatePressure();
-        void calculateHumidity();
-
     public:
-        bme280(fd::i2c_base &i2cBus, const uint16_t &address);
-
         enum class Register : uint8_t {
             CTRL_HUM  = 0xF2,
             CTRL_MEAS = 0xF4,
@@ -46,6 +39,28 @@ namespace fd::peripherals {
             RESET     = 0xE0
         };
 
+    protected:
+        void calculateTemperature();
+
+        void calculatePressure();
+
+        void calculateHumidity();
+
+
+        void storeTrimParameters();
+
+
+    public:
+        bme280(fd::i2c_base &i2cBus, const uint16_t &address);
+
+        /**
+         * Alle beschikbare dataregisters van de BME280
+         */
+
+
+        /**
+         * Bitwaarden voor de mogelijke oversamplingwaarden voor Gyro en Accel
+         */
         enum class Oversampling : uint8_t {
             SKIPPED = 0,
             X1      = 0x01,
@@ -55,12 +70,20 @@ namespace fd::peripherals {
             X16     = 0x05
         };
 
+        /**
+         * Mogelijke modi waarin de sensor ingesteld kan worden.
+         * De standaardmodus is Forced
+         */
         enum class Mode : uint8_t {
             SLEEP  = 0,
             FORCED = 1,
             NORMAL = 3
         };
 
+        /**
+         * De standbytijd die de sensor wacht voordat er weer een meting wordt gedaan.
+         * Hogere standby-tijden zullen het energieverbruik van de sensor verlagen
+         */
         enum class StandbyTime {
             US_500   = 0,
             US_62500 = 1,
@@ -72,6 +95,9 @@ namespace fd::peripherals {
             MS_20    = 7
         };
 
+        /**
+         * Mogelijke filterinstellingen voor meetwaarden
+         */
         enum class Filter {
             OFF  = 0,
             F_2  = 1,
@@ -80,6 +106,15 @@ namespace fd::peripherals {
             F_16 = 4
         };
 
+        /**
+         * Pas de instellingen van de onderdelen van de sensor aan.
+         * @param mode De instelmodus van de sensor
+         * @param humidityOversamplingRate Hoe vaak er gemeten moet worden voor 1 meetwaarde voor de humidity sensor
+         * @param pressureOversamplingRate Hoe vaak er gemeten moet worden voor 1 meetwaarde voor de pressure sensor
+         * @param temperatureOversamplingRate Hoe vaak er gemeten moet worden voor 1 meetwaarde voor de temperature sensor
+         * @param standbyTime Hoe lang de sensor moet wachten na een meting om een nieuwe meting te beginnen
+         * @param filter Wat voor filterwaarde er toegepast moet worden op meetwaarden.
+         */
         void setSettings(Mode mode = Mode::FORCED,
                          Oversampling humidityOversamplingRate = Oversampling::X1,
                          Oversampling pressureOversamplingRate = Oversampling::X1,
@@ -87,23 +122,72 @@ namespace fd::peripherals {
                          StandbyTime standbyTime = StandbyTime::MS_10,
                          Filter filter = Filter::OFF);
 
+        /**
+         * Haal de meest recente meetwaarden op van de sensor, en sla deze op in het bme280-object.
+         * Hierna kunnen de getTemperature, getPressure en getHumidity functies gebruikt worden om waarden te lezen
+         */
         void readData();
 
+        /**
+         * Doet de nodige  berekeningen met de opgehaalde data (van readData) om een temperatuurmeting uit te lezen, en
+         * geeft de meetwaarde hiervan terug
+         * @return De gemeten temperatuur in graden Celcius
+         */
         float getTemperature();
+
+        /**
+         * Doet de nodige  berekeningen met de opgehaalde data (van readData) om een barometrische druk uit te lezen, en
+         * geeft de meetwaarde hiervan terug
+         * @return De gemeten barometrische druk
+         */
         float getPressure();
+
+        /**
+         * Doet de nodige  berekeningen met de opgehaalde data (van readData) om een luchtvochtigheid uit te lezen, en
+         * geeft de meetwaarde hiervan terug
+         * @return De gemeten luchtvochtigheid
+         */
         float getHumidity();
 
+        /**
+         * Reset de sensor naar de standaardinstellingen
+         * Het is aan te raden om na een reset de init-functie opnieuw aan te roepen.
+         */
         void softReset();
 
-        void storeTrimParameters();
-
-        void writeRegister(Register reg, uint8_t *data, uint8_t size);
-        void writeRegister(Register reg, uint8_t data);
-
+        /**
+         * Lees de waarde van een register van de BME280
+         * @param reg Het register om te lezen
+         * @param data data-array om de data naartoe te schrijven
+         * @param size Lengte van de data
+         */
         void readRegister(Register reg, uint8_t *data, uint8_t size);
 
+        /**
+         * Lees de waarde van een 1-byte-register van de BME280
+         * @param reg Het register om te lezen
+         * @return De waarde van het register
+         */
         uint8_t readRegister(Register Register);
 
+        /**
+         * Verander de waarde van een register van de BME280
+         * @param reg Register om aan te passen
+         * @param data Data om in het register te zetten
+         * @param size Lengte van de data
+         */
+        void writeRegister(Register reg, uint8_t *data, uint8_t size);
+
+        /**
+         * Verander de waarde van een 1-byte register van de BME280
+         * @param reg Register om aan te passen
+         * @param data Data om in het register te zetten
+         */
+        void writeRegister(Register reg, uint8_t data);
+
+        /**
+         * Initialiseer de BME280
+         */
         void init();
     };
 }

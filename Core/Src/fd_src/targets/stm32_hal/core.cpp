@@ -5,6 +5,7 @@
 
 #include <fd/targets/base/core.hpp>
 #include "stm32f1xx_hal.h"
+#include "fd/targets/stm32_hal/core.hpp"
 
 
 void fd::sleep(long ms) {
@@ -17,4 +18,10 @@ void fd::software_reset() {
     while(true) {}
 }
 
+__attribute__((optimize("O0")))
+void fd::none() {
+
+}
+
 #endif
+

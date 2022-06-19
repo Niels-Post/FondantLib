@@ -209,12 +209,12 @@ void HAL_PWR_DisableBkUpAccess(void)
           __HAL_PVD_EXTI_ENABLE_IT() macro.
       (+) The PVD is stopped in Standby mode.
 
-    *** WakeUp value configuration ***
+    *** WakeUp pin configuration ***
     ================================
     [..]
-      (+) WakeUp value is used to wake up the system from Standby mode. This value is
+      (+) WakeUp pin is used to wake up the system from Standby mode. This pin is
           forced in input pull-down configuration and is active on rising edges.
-      (+) There is one WakeUp value:
+      (+) There is one WakeUp pin:
           WakeUp Pin 1 on PA.00.
 
     [..]
@@ -277,7 +277,7 @@ void HAL_PWR_DisableBkUpAccess(void)
       (+) Entry:
         (++) The Standby mode is entered using the HAL_PWR_EnterSTANDBYMode() function.
       (+) Exit:
-        (++) WKUP value rising edge, RTC alarm event rising edge, external Reset in
+        (++) WKUP pin rising edge, RTC alarm event rising edge, external Reset in 
              NRSTpin, IWDG Reset
 
    *** Auto-wakeup (AWU) from low-power mode ***
@@ -374,7 +374,7 @@ void HAL_PWR_DisablePVD(void)
 
 /**
   * @brief Enables the WakeUp PINx functionality.
-  * @param WakeUpPinx: Specifies the Power Wake-Up value to enable.
+  * @param WakeUpPinx: Specifies the Power Wake-Up pin to enable.
   *        This parameter can be one of the following values:
   *           @arg PWR_WAKEUP_PIN1
   * @retval None
@@ -383,13 +383,13 @@ void HAL_PWR_EnableWakeUpPin(uint32_t WakeUpPinx)
 {
   /* Check the parameter */
   assert_param(IS_PWR_WAKEUP_PIN(WakeUpPinx));
-  /* Enable the EWUPx value */
+  /* Enable the EWUPx pin */
   *(__IO uint32_t *) CSR_EWUP_BB(WakeUpPinx) = (uint32_t)ENABLE;
 }
 
 /**
   * @brief Disables the WakeUp PINx functionality.
-  * @param WakeUpPinx: Specifies the Power Wake-Up value to disable.
+  * @param WakeUpPinx: Specifies the Power Wake-Up pin to disable.
   *        This parameter can be one of the following values:
   *           @arg PWR_WAKEUP_PIN1
   * @retval None
@@ -398,7 +398,7 @@ void HAL_PWR_DisableWakeUpPin(uint32_t WakeUpPinx)
 {
   /* Check the parameter */
   assert_param(IS_PWR_WAKEUP_PIN(WakeUpPinx));
-  /* Disable the EWUPx value */
+  /* Disable the EWUPx pin */
   *(__IO uint32_t *) CSR_EWUP_BB(WakeUpPinx) = (uint32_t)DISABLE;
 }
 
@@ -496,8 +496,8 @@ void HAL_PWR_EnterSTOPMode(uint32_t Regulator, uint8_t STOPEntry)
   * @brief Enters Standby mode.
   * @note  In Standby mode, all I/O pins are high impedance except for:
   *          - Reset pad (still available) 
-  *          - TAMPER value if configured for tamper or calibration out.
-  *          - WKUP value (PA0) if enabled.
+  *          - TAMPER pin if configured for tamper or calibration out.
+  *          - WKUP pin (PA0) if enabled.
   * @retval None
   */
 void HAL_PWR_EnterSTANDBYMode(void)

@@ -32,14 +32,26 @@ fd::spi_status fd::stm32_hal::spi::transmit_receive(uint8_t *write_data, uint8_t
     HAL_StatusTypeDef result;
     cs_pin.write(GPIO_PIN_RESET);
     if (dma) {
-        result = HAL_SPI_TransmitReceive_DMA(handle, write_data, read_data, size);
+        if(write_data == nullptr) {
+            result = HAL_SPI_Receive_DMA(handle, read_data, size);
+        } else if(read_data == nullptr) {
+            result = HAL_SPI_Transmit_DMA(handle, write_data, size);
+        } else {
+            result = HAL_SPI_TransmitReceive_DMA(handle, write_data, read_data, size);
+        }
         if(result == HAL_OK) {
             return fd::spi_status::STARTED;
         }
         cs_pin.write(GPIO_PIN_SET);
 
     } else {
-        result = HAL_SPI_TransmitReceive(handle, write_data, read_data, size, default_timeout);
+        if(write_data == nullptr) {
+            result = HAL_SPI_Receive(handle, read_data, size, default_timeout);
+        } else if(read_data == nullptr) {
+            result = HAL_SPI_Transmit(handle, write_data, size, default_timeout);
+        } else {
+            result = HAL_SPI_TransmitReceive(handle, write_data, read_data, size, default_timeout);
+        }
         cs_pin.write(GPIO_PIN_SET);
     }
     last_error = (spi_error_status) handle->ErrorCode;

@@ -507,8 +507,8 @@ typedef struct
   __IOM uint32_t CFSR;                   /*!< Offset: 0x028 (R/W)  Configurable Fault Status Register */
   __IOM uint32_t HFSR;                   /*!< Offset: 0x02C (R/W)  HardFault Status Register */
   __IOM uint32_t DFSR;                   /*!< Offset: 0x030 (R/W)  Debug Fault Status Register */
-  __IOM uint32_t MMFAR;                  /*!< Offset: 0x034 (R/W)  MemManage Fault Register Register */
-  __IOM uint32_t BFAR;                   /*!< Offset: 0x038 (R/W)  BusFault Register Register */
+  __IOM uint32_t MMFAR;                  /*!< Offset: 0x034 (R/W)  MemManage Fault Address Register */
+  __IOM uint32_t BFAR;                   /*!< Offset: 0x038 (R/W)  BusFault Address Register */
   __IOM uint32_t AFSR;                   /*!< Offset: 0x03C (R/W)  Auxiliary Fault Status Register */
   __IM  uint32_t ID_PFR[2U];             /*!< Offset: 0x040 (R/ )  Processor Feature Register */
   __IM  uint32_t ID_DFR;                 /*!< Offset: 0x048 (R/ )  Debug Feature Register */
@@ -1488,14 +1488,14 @@ typedef struct
   __IM  uint32_t TYPE;                   /*!< Offset: 0x000 (R/ )  MPU Type Register */
   __IOM uint32_t CTRL;                   /*!< Offset: 0x004 (R/W)  MPU Control Register */
   __IOM uint32_t RNR;                    /*!< Offset: 0x008 (R/W)  MPU Region Number Register */
-  __IOM uint32_t RBAR;                   /*!< Offset: 0x00C (R/W)  MPU Region Base Register Register */
-  __IOM uint32_t RLAR;                   /*!< Offset: 0x010 (R/W)  MPU Region Limit Register Register */
-  __IOM uint32_t RBAR_A1;                /*!< Offset: 0x014 (R/W)  MPU Region Base Register Register Alias 1 */
-  __IOM uint32_t RLAR_A1;                /*!< Offset: 0x018 (R/W)  MPU Region Limit Register Register Alias 1 */
-  __IOM uint32_t RBAR_A2;                /*!< Offset: 0x01C (R/W)  MPU Region Base Register Register Alias 2 */
-  __IOM uint32_t RLAR_A2;                /*!< Offset: 0x020 (R/W)  MPU Region Limit Register Register Alias 2 */
-  __IOM uint32_t RBAR_A3;                /*!< Offset: 0x024 (R/W)  MPU Region Base Register Register Alias 3 */
-  __IOM uint32_t RLAR_A3;                /*!< Offset: 0x028 (R/W)  MPU Region Limit Register Register Alias 3 */
+  __IOM uint32_t RBAR;                   /*!< Offset: 0x00C (R/W)  MPU Region Base Address Register */
+  __IOM uint32_t RLAR;                   /*!< Offset: 0x010 (R/W)  MPU Region Limit Address Register */
+  __IOM uint32_t RBAR_A1;                /*!< Offset: 0x014 (R/W)  MPU Region Base Address Register Alias 1 */
+  __IOM uint32_t RLAR_A1;                /*!< Offset: 0x018 (R/W)  MPU Region Limit Address Register Alias 1 */
+  __IOM uint32_t RBAR_A2;                /*!< Offset: 0x01C (R/W)  MPU Region Base Address Register Alias 2 */
+  __IOM uint32_t RLAR_A2;                /*!< Offset: 0x020 (R/W)  MPU Region Limit Address Register Alias 2 */
+  __IOM uint32_t RBAR_A3;                /*!< Offset: 0x024 (R/W)  MPU Region Base Address Register Alias 3 */
+  __IOM uint32_t RLAR_A3;                /*!< Offset: 0x028 (R/W)  MPU Region Limit Address Register Alias 3 */
         uint32_t RESERVED0[1];
   union {
   __IOM uint32_t MAIR[2];
@@ -1532,7 +1532,7 @@ typedef struct
 #define MPU_RNR_REGION_Pos                  0U                                            /*!< MPU RNR: REGION Position */
 #define MPU_RNR_REGION_Msk                 (0xFFUL /*<< MPU_RNR_REGION_Pos*/)             /*!< MPU RNR: REGION Mask */
 
-/* MPU Region Base Register Register Definitions */
+/* MPU Region Base Address Register Definitions */
 #define MPU_RBAR_BASE_Pos                   5U                                            /*!< MPU RBAR: BASE Position */
 #define MPU_RBAR_BASE_Msk                  (0x7FFFFFFUL << MPU_RBAR_BASE_Pos)             /*!< MPU RBAR: BASE Mask */
 
@@ -1545,7 +1545,7 @@ typedef struct
 #define MPU_RBAR_XN_Pos                     0U                                            /*!< MPU RBAR: XN Position */
 #define MPU_RBAR_XN_Msk                    (01UL /*<< MPU_RBAR_XN_Pos*/)                  /*!< MPU RBAR: XN Mask */
 
-/* MPU Region Limit Register Register Definitions */
+/* MPU Region Limit Address Register Definitions */
 #define MPU_RLAR_LIMIT_Pos                  5U                                            /*!< MPU RLAR: LIMIT Position */
 #define MPU_RLAR_LIMIT_Msk                 (0x7FFFFFFUL << MPU_RLAR_LIMIT_Pos)            /*!< MPU RLAR: LIMIT Mask */
 
@@ -1602,13 +1602,13 @@ typedef struct
   __IM  uint32_t TYPE;                   /*!< Offset: 0x004 (R/ )  SAU Type Register */
 #if defined (__SAUREGION_PRESENT) && (__SAUREGION_PRESENT == 1U)
   __IOM uint32_t RNR;                    /*!< Offset: 0x008 (R/W)  SAU Region Number Register */
-  __IOM uint32_t RBAR;                   /*!< Offset: 0x00C (R/W)  SAU Region Base Register Register */
-  __IOM uint32_t RLAR;                   /*!< Offset: 0x010 (R/W)  SAU Region Limit Register Register */
+  __IOM uint32_t RBAR;                   /*!< Offset: 0x00C (R/W)  SAU Region Base Address Register */
+  __IOM uint32_t RLAR;                   /*!< Offset: 0x010 (R/W)  SAU Region Limit Address Register */
 #else
         uint32_t RESERVED0[3];
 #endif
   __IOM uint32_t SFSR;                   /*!< Offset: 0x014 (R/W)  Secure Fault Status Register */
-  __IOM uint32_t SFAR;                   /*!< Offset: 0x018 (R/W)  Secure Fault Register Register */
+  __IOM uint32_t SFAR;                   /*!< Offset: 0x018 (R/W)  Secure Fault Address Register */
 } SAU_Type;
 
 /* SAU Control Register Definitions */
@@ -1627,11 +1627,11 @@ typedef struct
 #define SAU_RNR_REGION_Pos                  0U                                            /*!< SAU RNR: REGION Position */
 #define SAU_RNR_REGION_Msk                 (0xFFUL /*<< SAU_RNR_REGION_Pos*/)             /*!< SAU RNR: REGION Mask */
 
-/* SAU Region Base Register Register Definitions */
+/* SAU Region Base Address Register Definitions */
 #define SAU_RBAR_BADDR_Pos                  5U                                            /*!< SAU RBAR: BADDR Position */
 #define SAU_RBAR_BADDR_Msk                 (0x7FFFFFFUL << SAU_RBAR_BADDR_Pos)            /*!< SAU RBAR: BADDR Mask */
 
-/* SAU Region Limit Register Register Definitions */
+/* SAU Region Limit Address Register Definitions */
 #define SAU_RLAR_LADDR_Pos                  5U                                            /*!< SAU RLAR: LADDR Position */
 #define SAU_RLAR_LADDR_Msk                 (0x7FFFFFFUL << SAU_RLAR_LADDR_Pos)            /*!< SAU RLAR: LADDR Mask */
 
@@ -1686,7 +1686,7 @@ typedef struct
 {
         uint32_t RESERVED0[1U];
   __IOM uint32_t FPCCR;                  /*!< Offset: 0x004 (R/W)  Floating-Point Context Control Register */
-  __IOM uint32_t FPCAR;                  /*!< Offset: 0x008 (R/W)  Floating-Point Context Register Register */
+  __IOM uint32_t FPCAR;                  /*!< Offset: 0x008 (R/W)  Floating-Point Context Address Register */
   __IOM uint32_t FPDSCR;                 /*!< Offset: 0x00C (R/W)  Floating-Point Default Status Control Register */
   __IM  uint32_t MVFR0;                  /*!< Offset: 0x010 (R/ )  Media and FP Feature Register 0 */
   __IM  uint32_t MVFR1;                  /*!< Offset: 0x014 (R/ )  Media and FP Feature Register 1 */
@@ -1744,7 +1744,7 @@ typedef struct
 #define FPU_FPCCR_LSPACT_Pos                0U                                            /*!< FPCCR: Lazy state preservation active bit Position */
 #define FPU_FPCCR_LSPACT_Msk               (1UL /*<< FPU_FPCCR_LSPACT_Pos*/)              /*!< FPCCR: Lazy state preservation active bit Mask */
 
-/* Floating-Point Context Register Register Definitions */
+/* Floating-Point Context Address Register Definitions */
 #define FPU_FPCAR_ADDRESS_Pos               3U                                            /*!< FPCAR: ADDRESS bit Position */
 #define FPU_FPCAR_ADDRESS_Msk              (0x1FFFFFFFUL << FPU_FPCAR_ADDRESS_Pos)        /*!< FPCAR: ADDRESS bit Mask */
 
@@ -1970,14 +1970,14 @@ typedef struct
  */
 
 /* Memory mapping of Core Hardware */
-  #define SCS_BASE            (0xE000E000UL)                             /*!< System Control Space Base Register */
-  #define ITM_BASE            (0xE0000000UL)                             /*!< ITM Base Register */
-  #define DWT_BASE            (0xE0001000UL)                             /*!< DWT Base Register */
-  #define TPI_BASE            (0xE0040000UL)                             /*!< TPI Base Register */
-  #define CoreDebug_BASE      (0xE000EDF0UL)                             /*!< Core Debug Base Register */
-  #define SysTick_BASE        (SCS_BASE +  0x0010UL)                     /*!< SysTick Base Register */
-  #define NVIC_BASE           (SCS_BASE +  0x0100UL)                     /*!< NVIC Base Register */
-  #define SCB_BASE            (SCS_BASE +  0x0D00UL)                     /*!< System Control Block Base Register */
+  #define SCS_BASE            (0xE000E000UL)                             /*!< System Control Space Base Address */
+  #define ITM_BASE            (0xE0000000UL)                             /*!< ITM Base Address */
+  #define DWT_BASE            (0xE0001000UL)                             /*!< DWT Base Address */
+  #define TPI_BASE            (0xE0040000UL)                             /*!< TPI Base Address */
+  #define CoreDebug_BASE      (0xE000EDF0UL)                             /*!< Core Debug Base Address */
+  #define SysTick_BASE        (SCS_BASE +  0x0010UL)                     /*!< SysTick Base Address */
+  #define NVIC_BASE           (SCS_BASE +  0x0100UL)                     /*!< NVIC Base Address */
+  #define SCB_BASE            (SCS_BASE +  0x0D00UL)                     /*!< System Control Block Base Address */
 
   #define SCnSCB              ((SCnSCB_Type    *)     SCS_BASE         ) /*!< System control Register not in SCB */
   #define SCB                 ((SCB_Type       *)     SCB_BASE         ) /*!< SCB configuration struct */
@@ -2002,11 +2002,11 @@ typedef struct
   #define FPU                 ((FPU_Type       *)     FPU_BASE         ) /*!< Floating Point Unit */
 
 #if defined (__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE == 3U)
-  #define SCS_BASE_NS         (0xE002E000UL)                             /*!< System Control Space Base Register (non-secure address space) */
-  #define CoreDebug_BASE_NS   (0xE002EDF0UL)                             /*!< Core Debug Base Register           (non-secure address space) */
-  #define SysTick_BASE_NS     (SCS_BASE_NS +  0x0010UL)                  /*!< SysTick Base Register              (non-secure address space) */
-  #define NVIC_BASE_NS        (SCS_BASE_NS +  0x0100UL)                  /*!< NVIC Base Register                 (non-secure address space) */
-  #define SCB_BASE_NS         (SCS_BASE_NS +  0x0D00UL)                  /*!< System Control Block Base Register (non-secure address space) */
+  #define SCS_BASE_NS         (0xE002E000UL)                             /*!< System Control Space Base Address (non-secure address space) */
+  #define CoreDebug_BASE_NS   (0xE002EDF0UL)                             /*!< Core Debug Base Address           (non-secure address space) */
+  #define SysTick_BASE_NS     (SCS_BASE_NS +  0x0010UL)                  /*!< SysTick Base Address              (non-secure address space) */
+  #define NVIC_BASE_NS        (SCS_BASE_NS +  0x0100UL)                  /*!< NVIC Base Address                 (non-secure address space) */
+  #define SCB_BASE_NS         (SCS_BASE_NS +  0x0D00UL)                  /*!< System Control Block Base Address (non-secure address space) */
 
   #define SCnSCB_NS           ((SCnSCB_Type    *)     SCS_BASE_NS      ) /*!< System control Register not in SCB(non-secure address space) */
   #define SCB_NS              ((SCB_Type       *)     SCB_BASE_NS      ) /*!< SCB configuration struct          (non-secure address space) */
@@ -2434,7 +2434,7 @@ __STATIC_INLINE void NVIC_DecodePriority (uint32_t Priority, uint32_t PriorityGr
            or negative to specify a processor exception.
            VTOR must been relocated to SRAM before.
   \param [in]   IRQn      Interrupt number
-  \param [in]   vector    Register of interrupt handler function
+  \param [in]   vector    Address of interrupt handler function
  */
 __STATIC_INLINE void __NVIC_SetVector(IRQn_Type IRQn, uint32_t vector)
 {
@@ -2449,7 +2449,7 @@ __STATIC_INLINE void __NVIC_SetVector(IRQn_Type IRQn, uint32_t vector)
            The interrupt number can be positive to specify a device specific interrupt,
            or negative to specify a processor exception.
   \param [in]   IRQn      Interrupt number.
-  \return                 Register of interrupt handler function
+  \return                 Address of interrupt handler function
  */
 __STATIC_INLINE uint32_t __NVIC_GetVector(IRQn_Type IRQn)
 {

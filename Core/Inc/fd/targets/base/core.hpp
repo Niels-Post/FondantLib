@@ -13,6 +13,8 @@ namespace fd {
      * Na het aanroepen van deze functie zal de main() volledig opnieuw aangeroepen worden.
      */
     void software_reset();
+
+    void none();
 }
 
 #endif //FD_HDR_BASE_CORE

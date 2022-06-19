@@ -130,7 +130,7 @@ typedef struct __DMA_HandleTypeDef
   
   __IO uint32_t         ErrorCode;                                                    /*!< DMA Error code                         */
 
-  DMA_TypeDef            *DmaBaseAddress;                                             /*!< DMA Channel Base Register               */
+  DMA_TypeDef            *DmaBaseAddress;                                             /*!< DMA Channel Base Address               */
   
   uint32_t               ChannelIndex;                                                /*!< DMA Channel Index                      */  
 

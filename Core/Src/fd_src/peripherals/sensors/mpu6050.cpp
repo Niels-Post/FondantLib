@@ -116,4 +116,10 @@ void fd::peripherals::mpu6050::setSleepEnabled(bool enabled) {
     setRegisterBits(Register::PWR_MGMT_1, 1 << 6, enabled << 6);
 }
 
+uint8_t fd::peripherals::mpu6050::getWhoAmI() {
+    uint8_t id;
+    readRegister(fd::peripherals::mpu6050::Register::WHO_AM_I, &id, 1);
+    return id;
+}
+
 

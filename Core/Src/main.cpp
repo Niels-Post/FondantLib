@@ -27,8 +27,8 @@ int fd_main() {
 //    examples::spi_dma::run();
 
     // Voorbeeld 6: I2C
-//    examples::i2c::setup();
-//    examples::i2c::run();
+    examples::i2c::setup();
+    examples::i2c::run();
 
 
     // Voorbeeld 7: I2C_HHD44780
@@ -44,8 +44,8 @@ int fd_main() {
 //    examples::i2c_mpu6050_hd44780::run();
 
     // Voorbeeld 10: Matrix Keypad
-    examples::matrix_keypad::setup();
-    examples::matrix_keypad::run();
+//    examples::matrix_keypad::setup();
+//    examples::matrix_keypad::run();
 
     return 0;
 }

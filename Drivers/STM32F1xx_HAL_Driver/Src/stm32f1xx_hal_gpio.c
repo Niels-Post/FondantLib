@@ -51,13 +51,13 @@
  [..]
    (#) Enable the GPIO APB2 clock using the following function : __HAL_RCC_GPIOx_CLK_ENABLE().
 
-   (#) Configure the GPIO value(s) using HAL_GPIO_Init().
+   (#) Configure the GPIO pin(s) using HAL_GPIO_Init().
        (++) Configure the IO mode using "Mode" member from GPIO_InitTypeDef structure
        (++) Activate Pull-up, Pull-down resistor using "Pull" member from GPIO_InitTypeDef
             structure.
        (++) In case of Output or alternate function mode selection: the speed is
             configured through "Speed" member from GPIO_InitTypeDef structure
-       (++) Analog mode is required when a value is to be used as ADC channel
+       (++) Analog mode is required when a pin is to be used as ADC channel
             or DAC output.
        (++) In case of external interrupt/event selection the "Mode" member from
             GPIO_InitTypeDef structure select the type (interrupt or event) and
@@ -67,12 +67,12 @@
        mapped to the EXTI line using HAL_NVIC_SetPriority() and enable it using
        HAL_NVIC_EnableIRQ().
 
-   (#) To get the level of a value configured in input mode use HAL_GPIO_ReadPin().
+   (#) To get the level of a pin configured in input mode use HAL_GPIO_ReadPin().
 
-   (#) To set/reset the level of a value configured in output mode use
+   (#) To set/reset the level of a pin configured in output mode use
        HAL_GPIO_WritePin()/HAL_GPIO_TogglePin().
 
-   (#) To lock value configuration until next reset use HAL_GPIO_LockPin().
+   (#) To lock pin configuration until next reset use HAL_GPIO_LockPin().
 
    (#) During and just after reset, the alternate functions are not
        active and the GPIO pins are configured in input floating mode (except JTAG
@@ -182,7 +182,7 @@ void HAL_GPIO_Init(GPIO_TypeDef  *GPIOx, GPIO_InitTypeDef *GPIO_Init)
   uint32_t iocurrent;
   uint32_t temp;
   uint32_t config = 0x00u;
-  __IO uint32_t *configregister; /* Store the address of CRL or CRH register based on value number */
+  __IO uint32_t *configregister; /* Store the address of CRL or CRH register based on pin number */
   uint32_t registeroffset;       /* offset used during computation of CNF and MODE bits placement inside CRL or CRH register */
 
   /* Check the parameters */
@@ -207,35 +207,35 @@ void HAL_GPIO_Init(GPIO_TypeDef  *GPIOx, GPIO_InitTypeDef *GPIO_Init)
       /* Based on the required mode, filling config variable with MODEy[1:0] and CNFy[3:2] corresponding bits */
       switch (GPIO_Init->Mode)
       {
-        /* If we are configuring the value in OUTPUT push-pull mode */
+        /* If we are configuring the pin in OUTPUT push-pull mode */
         case GPIO_MODE_OUTPUT_PP:
           /* Check the GPIO speed parameter */
           assert_param(IS_GPIO_SPEED(GPIO_Init->Speed));
           config = GPIO_Init->Speed + GPIO_CR_CNF_GP_OUTPUT_PP;
           break;
 
-        /* If we are configuring the value in OUTPUT open-drain mode */
+        /* If we are configuring the pin in OUTPUT open-drain mode */
         case GPIO_MODE_OUTPUT_OD:
           /* Check the GPIO speed parameter */
           assert_param(IS_GPIO_SPEED(GPIO_Init->Speed));
           config = GPIO_Init->Speed + GPIO_CR_CNF_GP_OUTPUT_OD;
           break;
 
-        /* If we are configuring the value in ALTERNATE FUNCTION push-pull mode */
+        /* If we are configuring the pin in ALTERNATE FUNCTION push-pull mode */
         case GPIO_MODE_AF_PP:
           /* Check the GPIO speed parameter */
           assert_param(IS_GPIO_SPEED(GPIO_Init->Speed));
           config = GPIO_Init->Speed + GPIO_CR_CNF_AF_OUTPUT_PP;
           break;
 
-        /* If we are configuring the value in ALTERNATE FUNCTION open-drain mode */
+        /* If we are configuring the pin in ALTERNATE FUNCTION open-drain mode */
         case GPIO_MODE_AF_OD:
           /* Check the GPIO speed parameter */
           assert_param(IS_GPIO_SPEED(GPIO_Init->Speed));
           config = GPIO_Init->Speed + GPIO_CR_CNF_AF_OUTPUT_OD;
           break;
 
-        /* If we are configuring the value in INPUT (also applicable to EVENT and IT mode) */
+        /* If we are configuring the pin in INPUT (also applicable to EVENT and IT mode) */
         case GPIO_MODE_INPUT:
         case GPIO_MODE_IT_RISING:
         case GPIO_MODE_IT_FALLING:
@@ -265,7 +265,7 @@ void HAL_GPIO_Init(GPIO_TypeDef  *GPIOx, GPIO_InitTypeDef *GPIO_Init)
           }
           break;
 
-        /* If we are configuring the value in INPUT analog mode */
+        /* If we are configuring the pin in INPUT analog mode */
         case GPIO_MODE_ANALOG:
           config = GPIO_CR_MODE_INPUT + GPIO_CR_CNF_ANALOG;
           break;
@@ -275,12 +275,12 @@ void HAL_GPIO_Init(GPIO_TypeDef  *GPIOx, GPIO_InitTypeDef *GPIO_Init)
           break;
       }
 
-      /* Check if the current bit belongs to first half or last half of the value count number
+      /* Check if the current bit belongs to first half or last half of the pin count number
        in order to address CRH or CRL register*/
       configregister = (iocurrent < GPIO_PIN_8) ? &GPIOx->CRL     : &GPIOx->CRH;
       registeroffset = (iocurrent < GPIO_PIN_8) ? (position << 2u) : ((position - 8u) << 2u);
 
-      /* Apply the new configuration of the value to the register */
+      /* Apply the new configuration of the pin to the register */
       MODIFY_REG((*configregister), ((GPIO_CRL_MODE0 | GPIO_CRL_CNF0) << registeroffset), (config << registeroffset));
 
       /*--------------------- EXTI Mode Configuration ------------------------*/
@@ -353,7 +353,7 @@ void HAL_GPIO_DeInit(GPIO_TypeDef  *GPIOx, uint32_t GPIO_Pin)
   uint32_t position = 0x00u;
   uint32_t iocurrent;
   uint32_t tmp;
-  __IO uint32_t *configregister; /* Store the address of CRL or CRH register based on value number */
+  __IO uint32_t *configregister; /* Store the address of CRL or CRH register based on pin number */
   uint32_t registeroffset;
 
   /* Check the parameters */
@@ -387,7 +387,7 @@ void HAL_GPIO_DeInit(GPIO_TypeDef  *GPIOx, uint32_t GPIO_Pin)
         CLEAR_BIT(EXTI->FTSR, (uint32_t)iocurrent);
       }
       /*------------------------- GPIO Mode Configuration --------------------*/
-      /* Check if the current bit belongs to first half or last half of the value count number
+      /* Check if the current bit belongs to first half or last half of the pin count number
        in order to address CRH or CRL register */
       configregister = (iocurrent < GPIO_PIN_8) ? &GPIOx->CRL     : &GPIOx->CRH;
       registeroffset = (iocurrent < GPIO_PIN_8) ? (position << 2u) : ((position - 8u) << 2u);
@@ -422,11 +422,11 @@ void HAL_GPIO_DeInit(GPIO_TypeDef  *GPIOx, uint32_t GPIO_Pin)
   */
 
 /**
-  * @brief  Reads the specified input port value.
+  * @brief  Reads the specified input port pin.
   * @param  GPIOx: where x can be (A..G depending on device used) to select the GPIO peripheral
   * @param  GPIO_Pin: specifies the port bit to read.
   *         This parameter can be GPIO_PIN_x where x can be (0..15).
-  * @retval The input port value value.
+  * @retval The input port pin value.
   */
 GPIO_PinState HAL_GPIO_ReadPin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin)
 {
@@ -458,8 +458,8 @@ GPIO_PinState HAL_GPIO_ReadPin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin)
   *          This parameter can be one of GPIO_PIN_x where x can be (0..15).
   * @param  PinState: specifies the value to be written to the selected bit.
   *          This parameter can be one of the GPIO_PinState enum values:
-  *            @arg GPIO_PIN_RESET: to clear the port value
-  *            @arg GPIO_PIN_SET: to set the port value
+  *            @arg GPIO_PIN_RESET: to clear the port pin
+  *            @arg GPIO_PIN_SET: to set the port pin
   * @retval None
   */
 void HAL_GPIO_WritePin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin, GPIO_PinState PinState)
@@ -479,7 +479,7 @@ void HAL_GPIO_WritePin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin, GPIO_PinState Pin
 }
 
 /**
-  * @brief  Toggles the specified GPIO value
+  * @brief  Toggles the specified GPIO pin
   * @param  GPIOx: where x can be (A..G depending on device used) to select the GPIO peripheral
   * @param  GPIO_Pin: Specifies the pins to be toggled.
   * @retval None

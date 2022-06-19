@@ -3,6 +3,7 @@
 
 #include "fd/targets/base/i2c.hpp"
 
+// TODO corrigeer voor de ingestelde FSR van de chip
 namespace fd::peripherals {
     class mpu6050 {
     private:
@@ -15,6 +16,9 @@ namespace fd::peripherals {
     public:
         mpu6050(i2c_base &bus, uint16_t address = 0x68);
 
+        /**
+         * Alle mogelijke dataregisters voor de MPU6050
+         */
         enum class Register : uint8_t {
             SELF_TEST_X  = 0x0D,
             SELF_TEST_Y  = 0x0E,
@@ -105,6 +109,16 @@ namespace fd::peripherals {
             WHO_AM_I           = 0x75
         };
 
+    private:
+        void setRegisterBits(Register reg, uint8_t bitMask, uint8_t newValue);
+
+    public:
+
+        /**
+         * Mogelijke instellingen voor het volledige bereik van de MPU6050 voor Gyro.
+         * Als deze ingesteld is op 250 graden/s, en getGyroX de hoogst mogelijke waarde (32767) teruggeeft, dan is
+         * de gemeten gyrowaarde dus 250 graden/s
+         */
         enum class GyroFullScaleRange : uint8_t {
             FSR_250DEG_PER_S  = 0,
             FSR_500DEG_PER_S  = 1,
@@ -112,6 +126,11 @@ namespace fd::peripherals {
             FSR_2000DEG_PER_S = 3,
         };
 
+        /**
+         * Mogelijke instellingen voor het volledige bereik van de MPU6050 voor Accel.
+         * Als deze ingesteld is op 2G, en getAccelX de hoogst mogelijke waarde (32767) teruggeeft, dan is
+         * de gemeten gyrowaarde dus 2G
+         */
         enum class AccelFullScaleRange : uint8_t {
             FSR_2G  = 0,
             FSR_4G  = 1,
@@ -119,40 +138,125 @@ namespace fd::peripherals {
             FSR_16G = 3,
         };
 
+        /**
+         * Lees een dataregister van de MPU6050 uit
+         * @param reg Register om uit te lezen
+         * @param data Data-array om de data naartoe te schrijven
+         * @param length Lengte van de data
+         */
         void readRegister(Register reg, uint8_t *data, uint8_t length);
 
+        /**
+         * Schrijf een nieuwe waarde naar een dataregister van de MPU6050
+         * @param reg Register om naar te schrijven
+         * @param data Data-byte om te schrijven
+         */
         void writeRegister(Register reg, uint8_t data);
 
-        void setRegisterBits(Register reg, uint8_t bitMask, uint8_t newValue);
-
-
+        /**
+         * Vraag de sensordata op bij de MPU6050 en sla deze op in het mpu6050-object
+         */
         void readData();
 
+        /**
+         * Stel de samplerate divider in.
+         * Een hogere samplereate divider zorgt voor minder metingen per seconde, maar ook dat de mpu6050 minder energie
+         * gebruikt
+         * @param divider De nieuwe sampleratedivider
+         */
         void setSampleRateDivider(uint8_t divider);
 
+        /**
+         * Stel de FSR voor de gyro in. Zie GyroFullScaleRange voor meer informatie
+         * @param range  De nieuwe FSR voor de gyro
+         */
         void setGyroFullScaleRange(const GyroFullScaleRange &range);
 
+        /**
+         * Stel de FSR voor de accelerometer in. Zie AccelFullScaleRange voor meer informatie
+         * @param range  De nieuwe FSR voor de accelerometer
+         */
         void setAccelFullScaleRange(const AccelFullScaleRange &range);
 
+        /**
+         * Stel I2C bypass in. Hiermee wordt de I2C bus op de MPU (SCL+SDA) automatisch verbonden met XCL+XDA, zodat
+         * andere I2C apparaten "door de mpu6050 heen" aangesloten kunnen worden.
+         * @param enabled Of I2C bypass ingeschakeld moet worden
+         */
         void setI2CBypassEnabled(bool enabled);
 
+        /**
+         * Schakel de temperatuursensor in of uit
+         * @param enabled Of de temp-sensor ingeschakeld moet zijn
+         */
         void setTempEnabled(bool enabled);
 
+        /**
+         * Zet de MPU605 volledig in sleep modus
+         * @param enabled True voor sleep, False voor wakker
+         */
         void setSleepEnabled(bool enabled);
 
+        /**
+         * Herstel opgebouwde signaalpaden in de MPU6050 naar de standaard
+         * @param resetGyro Of de gyro-paden hersteld moeten worden
+         * @param resetAccel Of de accelerometer-paden hersteld moeten worden
+         * @param resetTemp Of de temperatuursensor-paden hersteld moeten worden
+         */
         void resetSignalPaths(bool resetGyro, bool resetAccel, bool resetTemp);
 
+        /**
+         * Herstel de MPU6050-registers en alle signaalpaden naar de standaardwaarden
+         */
         void resetSignalPathsAndRegisters();
 
+        /**
+         * Bereken, en haal de gemeten waarde voor accelerometer X op
+         * @return De gemeten waarde
+         */
         uint16_t getAccelX();
+
+        /**
+         * Bereken, en haal de gemeten waarde voor accelerometer Y op
+         * @return De gemeten waarde
+         */
         uint16_t getAccelY();
+
+        /**
+         * Bereken, en haal de gemeten waarde voor accelerometer Z op
+         * @return De gemeten waarde
+         */
         uint16_t getAccelZ();
 
+        /**
+         * Bereken, en haal de gemeten temperatuur
+         * @return De gemeten temperatuur in graden celcius
+         */
         double getTemp();
 
+        /**
+         * Bereken, en haal de gemeten waarde voor gyro X op
+         * @return De gemeten waarde
+         */
         int getGyroX();
+
+        /**
+         * Bereken, en haal de gemeten waarde voor gyro Y op
+         * @return De gemeten waarde
+         */
         int getGyroY();
+
+        /**
+         * Bereken, en haal de gemeten waarde voor gyro Z op
+         * @return De gemeten waarde
+         */
         int getGyroZ();
+
+        /**
+         * Haal de waarde van het WHOAMI register op
+         * @return WhoAmI waarde
+         */
+        uint8_t getWhoAmI();
 
 
     };

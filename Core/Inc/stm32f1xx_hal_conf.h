@@ -62,7 +62,7 @@
 /*#define HAL_MMC_MODULE_ENABLED   */
 /*#define HAL_SDRAM_MODULE_ENABLED   */
 /*#define HAL_SMARTCARD_MODULE_ENABLED   */
-/*#define HAL_SPI_MODULE_ENABLED   */
+#define HAL_SPI_MODULE_ENABLED
 /*#define HAL_SRAM_MODULE_ENABLED   */
 /*#define HAL_TIM_MODULE_ENABLED   */
 /*#define HAL_UART_MODULE_ENABLED   */
@@ -184,7 +184,7 @@
 
 /* Section 2: PHY configuration section */
 
-/* DP83848_PHY_ADDRESS Register*/
+/* DP83848_PHY_ADDRESS Address*/
 #define DP83848_PHY_ADDRESS           0x01U
 /* PHY Reset delay these values are based on a 1 ms Systick interrupt*/
 #define PHY_RESET_DELAY                 0x000000FFU

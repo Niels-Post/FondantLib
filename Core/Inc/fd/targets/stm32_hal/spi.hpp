@@ -11,7 +11,7 @@ namespace fd::stm32_hal {
 
     fd::spi_status get_spi_status(int status);
     enum class spi_error_status: uint32_t {
-        NONE = HAL_I2C_ERROR_NONE,
+        NONE = HAL_SPI_ERROR_NONE,
         ERROR_MODF = HAL_SPI_ERROR_MODF,
         ERROR_CRC = HAL_SPI_ERROR_CRC,
         ERROR_OVR = HAL_SPI_ERROR_OVR,

@@ -176,9 +176,9 @@ typedef struct
   * @param  __FLAG__: specifies the flag to check.
   *           This parameter can be one of the following values:
   *            @arg PWR_FLAG_WU: Wake Up flag. This flag indicates that a wakeup event
-  *                  was received from the WKUP value or from the RTC alarm
-  *                  An additional wakeup event is detected if the WKUP value is enabled
-  *                  (by setting the EWUP bit) when the WKUP value level is already high.
+  *                  was received from the WKUP pin or from the RTC alarm
+  *                  An additional wakeup event is detected if the WKUP pin is enabled
+  *                  (by setting the EWUP bit) when the WKUP pin level is already high.
   *            @arg PWR_FLAG_SB: StandBy flag. This flag indicates that the system was
   *                  resumed from StandBy mode.
   *            @arg PWR_FLAG_PVDO: PVD Output. This flag is valid only if PVD is enabled

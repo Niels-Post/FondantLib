@@ -79,7 +79,7 @@
 */
 #define ARM_MPU_AP_(RO, NP) (((RO & 1U) << 1U) | (NP & 1U))
 
-/** \brief Region Base Register Register value
+/** \brief Region Base Address Register value
 * \param BASE The base address bits [31:5] of a memory region. The value is zero extended. Effective address gets 32 byte aligned.
 * \param SH Defines the Shareability domain for this memory region.
 * \param RO Read-Only: Set to 1 for a read-only memory region.
@@ -92,7 +92,7 @@
   ((ARM_MPU_AP_(RO, NP) << MPU_RBAR_AP_Pos) & MPU_RBAR_AP_Msk) | \
   ((XN << MPU_RBAR_XN_Pos) & MPU_RBAR_XN_Msk))
 
-/** \brief Region Limit Register Register value
+/** \brief Region Limit Address Register value
 * \param LIMIT The limit address bits [31:5] for this memory region. The value is one extended.
 * \param IDX The attribute index to be associated with this memory region.
 */
@@ -105,8 +105,8 @@
 * Struct for a single MPU Region
 */
 typedef struct {
-  uint32_t RBAR;                   /*!< Region Base Register Register value */
-  uint32_t RLAR;                   /*!< Region Limit Register Register value */
+  uint32_t RBAR;                   /*!< Region Base Address Register value */
+  uint32_t RLAR;                   /*!< Region Limit Address Register value */
 } ARM_MPU_Region_t;
     
 /** Enable the MPU.

@@ -97,11 +97,11 @@ typedef struct
                                @note This parameter is valid only in PWM1 and PWM2 mode. */
 
 
-  uint32_t OCIdleState;   /*!< Specifies the TIM Output Compare value state during Idle state.
+  uint32_t OCIdleState;   /*!< Specifies the TIM Output Compare pin state during Idle state.
                                This parameter can be a value of @ref TIM_Output_Compare_Idle_State
                                @note This parameter is valid only for timer instances supporting break feature. */
 
-  uint32_t OCNIdleState;  /*!< Specifies the TIM Output Compare value state during Idle state.
+  uint32_t OCNIdleState;  /*!< Specifies the TIM Output Compare pin state during Idle state.
                                This parameter can be a value of @ref TIM_Output_Compare_N_Idle_State
                                @note This parameter is valid only for timer instances supporting break feature. */
 } TIM_OC_InitTypeDef;
@@ -124,11 +124,11 @@ typedef struct
                                This parameter can be a value of @ref TIM_Output_Compare_N_Polarity
                                @note This parameter is valid only for timer instances supporting break feature. */
 
-  uint32_t OCIdleState;   /*!< Specifies the TIM Output Compare value state during Idle state.
+  uint32_t OCIdleState;   /*!< Specifies the TIM Output Compare pin state during Idle state.
                                This parameter can be a value of @ref TIM_Output_Compare_Idle_State
                                @note This parameter is valid only for timer instances supporting break feature. */
 
-  uint32_t OCNIdleState;  /*!< Specifies the TIM Output Compare value state during Idle state.
+  uint32_t OCNIdleState;  /*!< Specifies the TIM Output Compare pin state during Idle state.
                                This parameter can be a value of @ref TIM_Output_Compare_N_Idle_State
                                @note This parameter is valid only for timer instances supporting break feature. */
 
@@ -442,7 +442,7 @@ typedef  void (*pTIM_CallbackTypeDef)(TIM_HandleTypeDef *htim);  /*!< pointer to
   * @}
   */
 
-/** @defgroup TIM_DMA_Base_address TIM DMA Base Register
+/** @defgroup TIM_DMA_Base_address TIM DMA Base Address
   * @{
   */
 #define TIM_DMABASE_CR1                    0x00000000U
@@ -780,8 +780,8 @@ typedef  void (*pTIM_CallbackTypeDef)(TIM_HandleTypeDef *htim);  /*!< pointer to
 /** @defgroup TIM_ClearInput_Polarity TIM Clear Input Polarity
   * @{
   */
-#define TIM_CLEARINPUTPOLARITY_INVERTED           TIM_ETRPOLARITY_INVERTED      /*!< Polarity for ETRx value */
-#define TIM_CLEARINPUTPOLARITY_NONINVERTED        TIM_ETRPOLARITY_NONINVERTED   /*!< Polarity for ETRx value */
+#define TIM_CLEARINPUTPOLARITY_INVERTED           TIM_ETRPOLARITY_INVERTED      /*!< Polarity for ETRx pin */
+#define TIM_CLEARINPUTPOLARITY_NONINVERTED        TIM_ETRPOLARITY_NONINVERTED   /*!< Polarity for ETRx pin */
 /**
   * @}
   */
@@ -790,9 +790,9 @@ typedef  void (*pTIM_CallbackTypeDef)(TIM_HandleTypeDef *htim);  /*!< pointer to
   * @{
   */
 #define TIM_CLEARINPUTPRESCALER_DIV1              TIM_ETRPRESCALER_DIV1         /*!< No prescaler is used                                                   */
-#define TIM_CLEARINPUTPRESCALER_DIV2              TIM_ETRPRESCALER_DIV2         /*!< Prescaler for External ETR value: Capture performed once every 2 events. */
-#define TIM_CLEARINPUTPRESCALER_DIV4              TIM_ETRPRESCALER_DIV4         /*!< Prescaler for External ETR value: Capture performed once every 4 events. */
-#define TIM_CLEARINPUTPRESCALER_DIV8              TIM_ETRPRESCALER_DIV8         /*!< Prescaler for External ETR value: Capture performed once every 8 events. */
+#define TIM_CLEARINPUTPRESCALER_DIV2              TIM_ETRPRESCALER_DIV2         /*!< Prescaler for External ETR pin: Capture performed once every 2 events. */
+#define TIM_CLEARINPUTPRESCALER_DIV4              TIM_ETRPRESCALER_DIV4         /*!< Prescaler for External ETR pin: Capture performed once every 4 events. */
+#define TIM_CLEARINPUTPRESCALER_DIV8              TIM_ETRPRESCALER_DIV8         /*!< Prescaler for External ETR pin: Capture performed once every 8 events. */
 /**
   * @}
   */
@@ -945,7 +945,7 @@ typedef  void (*pTIM_CallbackTypeDef)(TIM_HandleTypeDef *htim);  /*!< pointer to
 /** @defgroup TIM_TI1_Selection TIM TI1 Input Selection
   * @{
   */
-#define TIM_TI1SELECTION_CH1               0x00000000U                          /*!< The TIMx_CH1 value is connected to TI1 input */
+#define TIM_TI1SELECTION_CH1               0x00000000U                          /*!< The TIMx_CH1 pin is connected to TI1 input */
 #define TIM_TI1SELECTION_XORCOMBINATION    TIM_CR2_TI1S                         /*!< The TIMx_CH1, CH2 and CH3 pins are connected to the TI1 input (XOR combination) */
 /**
   * @}

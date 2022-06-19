@@ -71,10 +71,10 @@
   */
 
 /**
-  * @brief  Configures the port and value on which the EVENTOUT Cortex signal will be connected.
+  * @brief  Configures the port and pin on which the EVENTOUT Cortex signal will be connected.
   * @param  GPIO_PortSource Select the port used to output the Cortex EVENTOUT signal.
   *   This parameter can be a value of @ref GPIOEx_EVENTOUT_PORT.
-  * @param  GPIO_PinSource Select the value used to output the Cortex EVENTOUT signal.
+  * @param  GPIO_PinSource Select the pin used to output the Cortex EVENTOUT signal.
   *   This parameter can be a value of @ref GPIOEx_EVENTOUT_PIN.
   * @retval None
   */
