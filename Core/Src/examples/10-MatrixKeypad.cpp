@@ -49,7 +49,6 @@ namespace examples::matrix_keypad {
         // Maak het keypadobject aan
         auto keypad = fd::peripherals::keypad_matrix_4x4{r1, r2, r3, r4, c1, c2, c3, c4};
 
-		bus.write()
         char output[20];
 
         while (true) {

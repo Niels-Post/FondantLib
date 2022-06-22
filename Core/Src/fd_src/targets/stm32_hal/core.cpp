@@ -23,5 +23,10 @@ void fd::none() {
 
 }
 
+uint32_t fd::stm32_hal::get_current_ticks() {
+    return HAL_GetTick();
+}
+
 #endif
+
 

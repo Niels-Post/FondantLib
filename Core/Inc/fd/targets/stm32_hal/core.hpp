@@ -9,6 +9,8 @@ namespace fd::stm32_hal {
         HAL_TIMEOUT = 0x03U
     };
 
+    uint32_t get_current_ticks();
+
 }
 
 #endif //FD_HDR_STM32_HAL_CORE

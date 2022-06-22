@@ -2,7 +2,6 @@
 #define FD_HDR_BASE_SPI
 
 #include "fd/fondant.hpp"
-#include "stm32f1xx_hal_spi.h"
 
 namespace fd {
 

@@ -3,6 +3,7 @@
 #include <fd/gpio.hpp>
 
 #include <examples.hpp>
+#include <fd/targets/stm32_hal/interrupt.hpp>
 
 int fd_main() {
 
@@ -27,8 +28,8 @@ int fd_main() {
 //    examples::spi_dma::run();
 
     // Voorbeeld 6: I2C
-    examples::i2c::setup();
-    examples::i2c::run();
+//    examples::i2c::setup();
+//    examples::i2c::run();
 
 
     // Voorbeeld 7: I2C_HHD44780
@@ -46,6 +47,10 @@ int fd_main() {
     // Voorbeeld 10: Matrix Keypad
 //    examples::matrix_keypad::setup();
 //    examples::matrix_keypad::run();
+
+    // Voorbeeld 11: Interrupts
+    examples::interrupts::setup();
+    examples::interrupts::run();
 
     return 0;
 }
