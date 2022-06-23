@@ -30,17 +30,17 @@ namespace fd::stm32_hal {
 	public:
 		i2c(I2C_HandleTypeDef &handle, bool dma, uint32_t defaultTimeout);
 
-		i2c_status write(uint16_t address, uint8_t *write_date, uint8_t size) override;
+		i2c_status write(uint16_t address, uint8_t *write_date, size_t size) override;
 
-		i2c_status read(uint16_t address, uint8_t *read_data, uint8_t size) override;
+		i2c_status read(uint16_t address, uint8_t *read_data, size_t size) override;
 
 		i2c_status wait() override;
 
 		i2c_status write_reg(uint16_t dev_address, uint16_t reg_address, uint8_t address_length, uint8_t *write_data,
-							 uint8_t data_size) override;
+                             size_t data_size) override;
 
 		i2c_status read_reg(uint16_t address, uint16_t reg_address, uint8_t address_length, uint8_t *read_data,
-							uint8_t data_size) override;
+                            size_t data_size) override;
 	};
 }
 

@@ -1,6 +1,7 @@
 #ifndef FD_HDR_BASE_SPI
 #define FD_HDR_BASE_SPI
 
+#include <stddef.h>
 #include "fd/fondant.hpp"
 
 namespace fd {
@@ -31,7 +32,7 @@ namespace fd {
 		 * @param size Aantal bytes aan data om te communiceren
 		 * @return De resultaatstatus van de transactie
 		 */
-        virtual fd::spi_status transmit_receive(uint8_t *write_data, uint8_t *read_data, uint8_t size) {
+        virtual fd::spi_status transmit_receive(uint8_t *write_data, uint8_t *read_data, size_t size) {
             return fd::spi_status::NOT_IMPLEMENTED;
         };
 
@@ -49,7 +50,7 @@ namespace fd {
 		 * @param size Lengte van de data
 		 * @return De resultaatstatus van de transactie
 		 */
-        virtual fd::spi_status transmit(uint8_t *write_data, uint8_t size) {
+        virtual fd::spi_status transmit(uint8_t *write_data, size_t size) {
             return transmit_receive(write_data, nullptr, size);
         };
 
@@ -59,7 +60,7 @@ namespace fd {
 		 * @param size Lengte van de data
 		 * @return De resultaatstatus van de transactie
 		 */
-        virtual fd::spi_status receive(uint8_t *read_data, uint8_t size) {
+        virtual fd::spi_status receive(uint8_t *read_data, size_t size) {
             return transmit_receive(nullptr, read_data, size);
         };
 
@@ -67,7 +68,7 @@ namespace fd {
 		 * Verstuur en ontvang een aantal bytes en wacht direct op het resultaat
 		 * Zie transmit_receive voor de parameters
 		 */
-        virtual fd::spi_status transmit_receive_wait(uint8_t *write_data, uint8_t *read_data, uint8_t size) {
+        virtual fd::spi_status transmit_receive_wait(uint8_t *write_data, uint8_t *read_data, size_t size) {
             spi_status status = transmit_receive(write_data, read_data, size);
             if(status != fd::spi_status::STARTED) {
                 return status;
@@ -80,7 +81,7 @@ namespace fd {
 		 * Verstuur een aantal bytes en wacht direct op het resultaat
 		 * Zie transmit voor de parameters
 		 */
-        virtual fd::spi_status transmit_wait(uint8_t *write_data, uint8_t size) {
+        virtual fd::spi_status transmit_wait(uint8_t *write_data, size_t size) {
             spi_status status = transmit(write_data, size);
             if(status != fd::spi_status::STARTED) {
                 return status;
@@ -93,7 +94,7 @@ namespace fd {
 		 * Ontvang een aantal bytes en wacht direct op het resultaat
 		 * Zie receive voor de parameters
 		 */
-        virtual fd::spi_status receive_wait(uint8_t *read_data, uint8_t size) {
+        virtual fd::spi_status receive_wait(uint8_t *read_data, size_t size) {
             spi_status status = receive(read_data, size);
             if(status != fd::spi_status::STARTED) {
                 return status;

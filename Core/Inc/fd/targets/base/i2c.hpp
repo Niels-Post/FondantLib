@@ -1,6 +1,7 @@
 #ifndef FD_HDR_BASE_I2C
 #define FD_HDR_BASE_I2C
 
+#include <stddef.h>
 #include <cstdint>
 
 namespace fd {
@@ -42,7 +43,7 @@ namespace fd {
 		 * @param size Aantal bytes om te schrijven (exclusief het adres)
 		 * @return De resultaatstatus
 		 */
-		virtual i2c_status write(uint16_t device_address, uint8_t *write_data, uint8_t size) {
+		virtual i2c_status write(uint16_t device_address, uint8_t *write_data, size_t size) {
 			return i2c_status::NOT_IMPLEMENTED;
 		};
 
@@ -53,7 +54,7 @@ namespace fd {
 		 * @param size Aantal bytes om te lezen (exclusief het adres)
 		 * @return De resultaatstatus
 		 */
-		virtual i2c_status read(uint16_t device_address, uint8_t *read_data, uint8_t size) {
+		virtual i2c_status read(uint16_t device_address, uint8_t *read_data, size_t size) {
 			return i2c_status::NOT_IMPLEMENTED;
 		};
 
@@ -66,7 +67,7 @@ namespace fd {
 		 * @param size Aantal bytes om te schrijven (exclusief het device- en register-adres)
 		 * @return De resultaatstatus
 		 */
-        virtual i2c_status write_reg(uint16_t device_address, uint16_t reg_address, uint8_t address_length, uint8_t *write_data, uint8_t data_size){
+        virtual i2c_status write_reg(uint16_t device_address, uint16_t reg_address, uint8_t address_length, uint8_t *write_data, size_t data_size){
             return i2c_status::NOT_IMPLEMENTED;
         }
 
@@ -79,7 +80,7 @@ namespace fd {
 		 * @param size Aantal bytes om te schrijven (exclusief het device- en register-adres)
 		 * @return De resultaatstatus
 		 */
-        virtual i2c_status read_reg(uint16_t device_address, uint16_t reg_address, uint8_t address_length, uint8_t *read_data, uint8_t data_size){
+        virtual i2c_status read_reg(uint16_t device_address, uint16_t reg_address, uint8_t address_length, uint8_t *read_data, size_t data_size){
             return i2c_status::NOT_IMPLEMENTED;
         }
 
