@@ -1,7 +1,7 @@
 #ifndef FD_HDR_BASE_SPI
 #define FD_HDR_BASE_SPI
 
-#include <stddef.h>
+#include <cstddef>
 #include "fd/fondant.hpp"
 
 namespace fd {

@@ -27,7 +27,7 @@ namespace examples::spi {
 
         // Maak een SPI-busobject aan
         // Hierbij houden we DMA uit, en stellen we de timeout in op 1000 ms
-        auto bus = fd::stm32_hal::spi(&hspi1, false, 1000, cs_pin);
+        auto bus = fd::stm32_hal::spi(hspi1, false, 1000, cs_pin);
 
 
         // Stel 4 bytes aan data op

@@ -40,8 +40,8 @@ namespace fd {
             return uart_status::NOT_IMPLEMENTED;
         }
 
-        uart_status receive_wait(uint8_t *data, size_t size) {
-            auto code = receive(data, size);
+        uart_status receive_wait(uint8_t *data, size_t size, size_t max_wait_ms) {
+            auto code = receive(data, size, max_wait_ms);
             if(code != uart_status::STARTED) {
                 return code;
             }

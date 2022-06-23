@@ -22,7 +22,7 @@ namespace examples::spi_dma {
 
 
         // Maak een SPIbus-object aan
-        auto bus = fd::stm32_hal::spi(&hspi1, true, 1000, cs_pin);
+        auto bus = fd::stm32_hal::spi(hspi1, true, 1000, cs_pin);
 
         uint8_t data[50] = {0};
 

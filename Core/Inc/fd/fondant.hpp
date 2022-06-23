@@ -5,7 +5,6 @@
 
 #include <fd/targets/base/core.hpp>
 
-#include "stm32f1xx_hal.h"
 
 
 
